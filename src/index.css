@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #F8F5F0;
+  --color-cream: #F2EDE6;
+  --color-nude: #E8D9D0;
+  --color-blush: #E8C4C0;
+  --color-soft-pink: #D4A5A5;
+  --color-charcoal: #2C2A28;
+  --color-brown: #4A3F35;
+  --color-gold: #C9A87C;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ivory text-charcoal font-sans antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .serif {
+  font-family: var(--font-serif);
+}
+
+::selection {
+  background: #E8C4C0;
+  color: #2C2A28;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F5F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A87C;
+  border-radius: 3px;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
