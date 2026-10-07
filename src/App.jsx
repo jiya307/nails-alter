@@ -13,6 +13,8 @@ import Booking from "./pages/Booking";
 import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Extensions from "./pages/Extensions";
+import Education from "./pages/Education";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -40,6 +42,9 @@ export default function App() {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/extensions" element={<Extensions />} />
+  <Route path="/education" element={<Education />} />
+
         </Routes>
       </main>
       <Footer />
