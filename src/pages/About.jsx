@@ -10,7 +10,7 @@ export default function About() {
   const ref = useRef(null);
 
   useEffect(() => {
-    document.title = "About the Artist · Arsh Atelier";
+    document.title = "About the Artist · Priya Atelier";
     const ctx = gsap.context(() => {
       gsap.utils.toArray(".reveal").forEach((el) => {
         gsap.from(el, {
@@ -31,12 +31,12 @@ export default function About() {
         {/* Hero portrait */}
         <section className="pt-32 pb-16 px-6 max-w-7xl mx-auto">
           <p className="text-xs tracking-widest uppercase text-gold mb-2 reveal">The Artist</p>
-          <h1 className="serif text-5xl md:text-6xl mb-12 reveal">Meet Arsh</h1>
+          <h1 className="serif text-5xl md:text-6xl mb-12 reveal">Meet Priya</h1>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div className="reveal aspect-[3/4] overflow-hidden bg-cream">
               <img
-                src="https://images.unsplash.com/photo-1487412947147-5cecb90ca5d8?w=900&q=80"
-                alt="Arsh - Nail Artist"
+                src="https://i.pinimg.com/736x/65/64/16/6564168a8a0f6f0a25944c98c16241c2.jpg"
+                alt="Priya - Nail Artist"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -45,10 +45,10 @@ export default function About() {
                 The tiniest details can hold the most feeling.
               </h2>
               <p className="text-brown/80 leading-relaxed mb-6">
-                Arsh Atelier began as a quiet practice — a private space where nail art is treated as a considered craft rather than a quick service. Every set is a conversation about colour, proportion, texture, and the version of yourself you want to take with you.
+                priya Atelier began as a quiet practice — a private space where nail art is treated as a considered craft rather than a quick service. Every set is a conversation about colour, proportion, texture, and the version of yourself you want to take with you.
               </p>
               <p className="text-brown/80 leading-relaxed">
-                Based in New Delhi, Arsh works one-on-one with clients who value precision, longevity, and designs that feel personal rather than trendy for a moment.
+                Based in New Delhi, Priya works one-on-one with clients who value precision, longevity, and designs that feel personal rather than trendy for a moment.
               </p>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function About() {
             <h2 className="serif text-4xl mb-8 reveal">How it started</h2>
             <div className="space-y-6 text-brown/80 leading-relaxed reveal">
               <p>
-                What began as a fascination with the architecture of the nail — shape, apex, free edge — grew into a dedicated practice. After formal training and years of refining technique, Arsh opened a private studio focused entirely on custom nail artistry.
+                What began as a fascination with the architecture of the nail — shape, apex, free edge — grew into a dedicated practice. After formal training and years of refining technique, Priya opened a private studio focused entirely on custom nail artistry.
               </p>
               <p>
                 There are no walk-in queues and no rushed appointments. Each session is booked with intention, allowing time for consultation, careful preparation, and work that is meant to last.
@@ -88,7 +88,7 @@ export default function About() {
               <p className="text-xs tracking-widest uppercase text-gold mb-4">Philosophy</p>
               <h2 className="serif text-3xl mb-6">Why nail art matters</h2>
               <p className="text-brown/80 leading-relaxed mb-6">
-                Nails are small, but they are always present. They appear in every photograph, every gesture, every quiet moment of the day. Arsh believes they deserve the same care as any other considered detail of personal style.
+                Nails are small, but they are always present. They appear in every photograph, every gesture, every quiet moment of the day. Priya believes they deserve the same care as any other considered detail of personal style.
               </p>
               <p className="text-brown/80 leading-relaxed">
                 The goal is never excess for its own sake — it is proportion, colour that flatters, and a finish that feels intentional.
@@ -98,14 +98,14 @@ export default function About() {
         </section>
 
         {/* Studio */}
-        <section className="py-20 bg-charcoal text-ivory">
+        <section className="py-20 bg-white text-black">
           <div className="max-w-3xl mx-auto px-6 text-center reveal">
             <p className="text-xs tracking-widest uppercase text-gold mb-4">The Studio</p>
             <h2 className="serif text-4xl mb-6">A quiet space in New Delhi</h2>
-            <p className="text-ivory/75 leading-relaxed mb-10">
+            <p className="text-black/75 leading-relaxed mb-10">
               Appointments are private. The studio is designed for calm focus — good light, clean tools, and uninterrupted time so the work can be precise.
             </p>
-            <Button to="/booking" className="bg-ivory text-charcoal hover:bg-gold">Book a Session</Button>
+            <Button to="/booking" className="bg-pink-200 text-black hover:bg-gold">Book a Session</Button>
           </div>
         </section>
       </div>

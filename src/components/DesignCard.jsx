@@ -13,7 +13,7 @@ export default function DesignCard({ design }) {
         <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/15 transition-colors duration-500" />
       </div>
       <div className="mt-4">
-        <p className="text-xs tracking-widest uppercase text-gold mb-1">{design.category}</p>
+        <p className="text-xs tracking-widest uppercase text-[#d91046] mb-1">{design.category}</p>
         <h3 className="serif text-lg">{design.title}</h3>
       </div>
     </Link>

@@ -3,11 +3,11 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal text-ivory pt-20 pb-10">
+    <footer className=" bg-white/50 text-black pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
         <div>
-          <h3 className="serif text-2xl mb-4">ARSH ATELIER</h3>
-          <p className="text-sm text-ivory/70 leading-relaxed max-w-xs">
+          <h3 className="serif text-2xl mb-4">Priya ATELIER</h3>
+          <p className="text-sm text-black leading-relaxed max-w-xs">
             Private nail artistry, considered. Custom sets designed around you.
           </p>
         </div>
@@ -30,13 +30,13 @@ export default function Footer() {
             <a href="https://instagram.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-gold">
               <FaInstagram /> Instagram
             </a>
-            <p className="text-ivory/60">New Delhi, India</p>
-            <p className="text-ivory/60">hello@arshatelier.com</p>
+            <p className="text-black/60">New Delhi, India</p>
+            <p className="text-black/60">hello@priyaatelier.com</p>
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-ivory/10 text-center text-xs text-ivory/50">
-        © 2026 ARSH ATELIER · New Delhi
+      <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-ivory/10 text-center text-xs text-black">
+        © 2026 Priya ATELIER · New Delhi
       </div>
     </footer>
   );

@@ -1,13 +1,14 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import PageTransition from "../components/PageTransition";
 import Button from "../components/Button";
 import DesignCard from "../components/DesignCard";
+
 import { designs } from "../data/designs";
-import { services } from "../data/services";
 import { testimonials } from "../data/testimonials";
-import nailhero from "../assets/nail-hero.jpg";
+import Luxury from "../assets/Luxury.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,18 +16,22 @@ export default function Home() {
   const heroRef = useRef(null);
 
   useEffect(() => {
-    document.title = "Les Ongles · Nail Studio";
+    document.title = "Les Ongles · Instant Luxury Extensions & Nail Education";
+
     const ctx = gsap.context(() => {
+      // Hero animation
       gsap.from(".hero-text > *", {
-        y: 40,
+        y: 35,
         opacity: 0,
         duration: 0.9,
         stagger: 0.12,
         ease: "power3.out",
         delay: 0.2,
       });
+
+      // Feature animation
       gsap.from(".feature-item", {
-        y: 25,
+        y: 20,
         opacity: 0,
         duration: 0.7,
         stagger: 0.1,
@@ -34,228 +39,630 @@ export default function Home() {
         delay: 0.7,
       });
 
+      // Scroll reveals
       gsap.utils.toArray(".reveal").forEach((el) => {
         gsap.from(el, {
-          y: 40,
+          y: 45,
           opacity: 0,
           duration: 0.8,
           ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 88%" },
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+          },
         });
       });
     }, heroRef);
+
     return () => ctx.revert();
   }, []);
 
   const features = [
-    { icon: "✦", label: "Trendy Designs" },
-    { icon: "🛡", label: "Hygienic & Safe" },
-    { icon: "👜", label: "Premium Products" },
-    { icon: "✿", label: "Personalized Care" },
+    {
+      number: "7+",
+      title: "YEARS",
+      text: "Nail Industry Experience",
+    },
+    {
+      number: "01",
+      title: "INSTANT LUXURY",
+      text: "Naturally Fitting Extensions",
+    },
+    {
+      number: "02",
+      title: "CUSTOM",
+      text: "Made For Your Style",
+    },
+    {
+      number: "03",
+      title: "EDUCATION",
+      text: "Online & Offline Learning",
+    },
   ];
 
   return (
     <PageTransition>
-      <div ref={heroRef} className="bg-[#f6eded] text-white">
-        {/* ── HERO – full background image ─────────────────── */}
-        <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
-          {/* Background image */}
+      <div
+        ref={heroRef}
+        className="bg-[#f8f4ee] text-[#25211f] overflow-hidden"
+      >
+
+        {/* =====================================================
+            HERO
+        ====================================================== */}
+        <section className="relative min-h-screen flex items-center overflow-hidden">
+
+          {/* Background Image */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-[center_right] bg-no-repeat"
             style={{
-              backgroundImage:
-                `url(${nailhero})`,
+              backgroundImage: `url(${Luxury})`,
             }}
           />
-          {/* Dark gradient overlay (matches reference) */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
 
-          {/* Text content – left side */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 pt-28 pb-36 hero-text">
-            <p className="text-[11px] tracking-[0.35em] uppercase text-white/70 mb-5">
-              Premium Nail Art Studio
-            </p>
+          {/* Soft luxury overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f8f4ee]/85 via-[#f8f4ee]/15 to-transparent" />
 
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-4 text-white">
-              Les Ongles
-            </h1>
+          {/* Hero Content */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 pt-32 pb-36">
 
-            <p className="text-xl md:text-2xl font-light text-white/90 mb-5">
-              Where Nails Meet Art
-            </p>
+            <div className="hero-text max-w-2xl">
 
-            <p className="text-base text-white/65 max-w-sm mb-10 leading-relaxed">
-              Beautiful nails for every mood, every moment
-              <br />
-              and every version of you.
-            </p>
+              {/* Location */}
+              <p className="text-[11px] tracking-[0.4em] uppercase text-[#9b693f] mb-6">
+                Amritsar · India
+              </p>
 
-            <a
-              href="https://wa.me/91XXXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-[#f5b8c8] hover:bg-[#f0a3b8] text-[#1a1a1a] font-medium text-sm px-7 py-3.5 rounded-full transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-5 h-5"
-              >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              Contact on WhatsApp
-            </a>
+              {/* Main Heading */}
+              <h1 className="font-serif text-5xl md:text-6xl lg:text-[78px] leading-[0.98] tracking-[-0.03em] text-[#211d1b] mb-7">
+                Instant Luxury.
+                <br />
+                Beautifully You.
+              </h1>
+
+              {/* Tagline */}
+              <p className="text-sm md:text-base tracking-[0.28em] uppercase text-[#302a27] mb-6 max-w-xl">
+                Instant Luxury Extensions
+                <br />
+                & Nail Education
+              </p>
+
+              {/* Description */}
+              <p className="text-base md:text-lg text-[#5f5650] max-w-lg leading-relaxed mb-10">
+                Naturally fitting, customisable extensions designed
+                to look refined, realistic and beautifully crafted.
+              </p>
+
+              {/* Buttons */}
+              <div className="flex flex-wrap gap-4">
+
+                <Button
+                  to="/extensions"
+                  variant="secondary"
+                  className="
+                    !bg-[#292522]
+                    !text-white
+                    !border-[#292522]
+                    px-7
+                    py-3.5
+                    tracking-[0.14em]
+                    uppercase
+                    text-xs
+                    hover:!bg-[#9b693f]
+                  "
+                >
+                  Explore Extensions →
+                </Button>
+
+                <Button
+                  to="/education"
+                  variant="secondary"
+                  className="
+                    !bg-transparent
+                    !text-[#292522]
+                    !border-[#292522]
+                    px-7
+                    py-3.5
+                    tracking-[0.14em]
+                    uppercase
+                    text-xs
+                    hover:!bg-[#292522]
+                    hover:!text-white
+                  "
+                >
+                  Learn With Les Ongles →
+                </Button>
+
+              </div>
+            </div>
           </div>
 
-          {/* Feature strip – bottom */}
-          <div className="absolute bottom-0 left-0 right-0 z-20">
-            <div className="max-w-5xl mx-auto px-6 py-7 grid grid-cols-2 md:grid-cols-4 gap-6">
-              {features.map((f) => (
+          {/* Feature Strip */}
+          <div className="absolute bottom-0 left-0 right-0 z-20 bg-[#f8f4ee]/90 backdrop-blur-sm border-t border-[#9b693f]/20">
+
+            <div className="max-w-7xl mx-auto px-6 py-7 grid grid-cols-2 lg:grid-cols-4">
+
+              {features.map((feature, index) => (
                 <div
-                  key={f.label}
-                  className="feature-item flex flex-col items-center text-center gap-2"
+                  key={feature.title}
+                  className={`
+                    feature-item
+                    px-5
+                    lg:px-8
+                    py-2
+                    ${
+                      index !== 0
+                        ? "border-l border-[#9b693f]/20"
+                        : ""
+                    }
+                  `}
                 >
-                  <span className="text-2xl text-[#f5b8c8]">{f.icon}</span>
-                  <span className="text-xs tracking-wide text-black">
-                    {f.label}
-                  </span>
+
+                  <div className="flex items-start gap-4">
+
+                    <span className="font-serif text-2xl text-[#9b693f]">
+                      {feature.number}
+                    </span>
+
+                    <div>
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-[#7b5031] font-medium">
+                        {feature.title}
+                      </p>
+
+                      <p className="text-xs text-[#655c56] mt-1 leading-relaxed">
+                        {feature.text}
+                      </p>
+                    </div>
+
+                  </div>
+
                 </div>
               ))}
+
             </div>
           </div>
         </section>
 
-        {/* ── RECENT WORK ──────────────────────────────────── */}
-        <section className="py-24 px-6 max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12 reveal">
-            <div>
-              <p className="text-xs tracking-widest uppercase text-[#f5b8c8] mb-2">
-                Selected Designs
-              </p>
-              <h2 className="font-serif text-black text-4xl">Recent Work</h2>
-            </div>
-            <Button to="/portfolio" variant="ghost">
-              View All →
-            </Button>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {designs.slice(0, 3).map((d) => (
-              <div key={d.id} className="reveal">
-                <DesignCard design={d} />
-              </div>
-            ))}
-          </div>
-        </section>
 
-        {/* ── ARTIST ───────────────────────────────────────── */}
-        <section className="py-24 bg-white/50">
-          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <div className="reveal">
-              <p className="text-xs tracking-widest uppercase text-black mb-4">
-                The Artist
-              </p>
-              <h2 className="font-serif text-black text-4xl md:text-5xl mb-6 leading-tight">
-                The tiniest details
-                <br />
-                can hold the most feeling.
-              </h2>
-              <p className="text-black/65 leading-relaxed mb-8 max-w-md">
-                At Les Ongles, every set is a conversation—about colour,
-                proportion, texture, and the version of yourself you want to
-                take with you.
-              </p>
-              <Button to="/about" variant="secondary">
-                Meet the Artist →
+        {/* =====================================================
+            BRAND INTRO
+        ====================================================== */}
+        <section className="py-28 md:py-36 px-6">
+
+          <div className="max-w-4xl mx-auto text-center reveal">
+
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#9b693f] mb-6">
+              The Les Ongles Story
+            </p>
+
+            <h2 className="font-serif text-4xl md:text-6xl leading-tight text-[#28221f] mb-8">
+              More Than Nails.
+              <br />
+              It&apos;s An Art Form.
+            </h2>
+
+            <p className="max-w-2xl mx-auto text-[#655c56] leading-relaxed text-base md:text-lg">
+              Born in Amritsar, India, Les Ongles was created from
+              a deep passion for nail artistry, creativity and
+              self-expression.
+            </p>
+
+            <p className="max-w-2xl mx-auto text-[#655c56] leading-relaxed text-base md:text-lg mt-5">
+              Today, Les Ongles brings together Instant Luxury
+              Extensions and professional nail education —
+              creating beautifully crafted nails while helping
+              aspiring artists discover the joy of creating
+              with their hands.
+            </p>
+
+            <div className="mt-9">
+              <Button to="/about" variant="ghost">
+                Discover Our Story →
               </Button>
             </div>
-            <div className="reveal aspect-[4/5] overflow-hidden rounded-sm">
+
+          </div>
+
+        </section>
+
+
+        {/* =====================================================
+            EXTENSIONS
+        ====================================================== */}
+        <section className="py-28 px-6 bg-white">
+
+          <div className="max-w-7xl mx-auto">
+
+            <div className="grid lg:grid-cols-2 gap-16 items-end mb-16 reveal">
+
+              <div>
+                <p className="text-[11px] tracking-[0.3em] uppercase text-[#9b693f] mb-4">
+                  Instant Luxury Extensions
+                </p>
+
+                <h2 className="font-serif text-4xl md:text-6xl leading-tight text-[#28221f]">
+                  Designed To Fit.
+                  <br />
+                  Crafted To Impress.
+                </h2>
+              </div>
+
+              <p className="text-[#655c56] max-w-lg leading-relaxed">
+                Thoughtfully crafted, naturally fitting and
+                customisable extensions designed to look
+                beautifully real and feel like an elevated
+                extension of the wearer.
+              </p>
+
+            </div>
+
+
+            {/* Extension Features */}
+            <div className="grid md:grid-cols-3 gap-6">
+
+              <div className="border border-[#d8c7b7] p-8 reveal">
+                <span className="text-[#9b693f] text-2xl">
+                  01
+                </span>
+
+                <h3 className="font-serif text-2xl mt-8 mb-4">
+                  Natural Fit
+                </h3>
+
+                <p className="text-sm text-[#655c56] leading-relaxed">
+                  Designed to complement the natural shape
+                  and appearance of your nails.
+                </p>
+              </div>
+
+
+              <div className="border border-[#d8c7b7] p-8 reveal">
+                <span className="text-[#9b693f] text-2xl">
+                  02
+                </span>
+
+                <h3 className="font-serif text-2xl mt-8 mb-4">
+                  Customisable
+                </h3>
+
+                <p className="text-sm text-[#655c56] leading-relaxed">
+                  Your nails should reflect your personality,
+                  style and individuality.
+                </p>
+              </div>
+
+
+              <div className="border border-[#d8c7b7] p-8 reveal">
+                <span className="text-[#9b693f] text-2xl">
+                  03
+                </span>
+
+                <h3 className="font-serif text-2xl mt-8 mb-4">
+                  Beautifully Crafted
+                </h3>
+
+                <p className="text-sm text-[#655c56] leading-relaxed">
+                  Refined details and finishes created with
+                  a focus on luxury and realism.
+                </p>
+              </div>
+
+            </div>
+
+            <div className="mt-12 text-center reveal">
+              <Button to="/extensions" variant="secondary">
+                Explore Extensions →
+              </Button>
+            </div>
+
+          </div>
+        </section>
+
+
+        {/* =====================================================
+            SELECTED DESIGNS
+        ====================================================== */}
+        <section className="py-28 px-6">
+
+          <div className="max-w-7xl mx-auto">
+
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 mb-12 reveal">
+
+              <div>
+                <p className="text-[11px] tracking-[0.3em] uppercase text-[#9b693f] mb-3">
+                  The Art Of Les Ongles
+                </p>
+
+                <h2 className="font-serif text-4xl md:text-5xl text-[#28221f]">
+                  Signature Work
+                </h2>
+              </div>
+
+              <Button to="/portfolio" variant="ghost">
+                View Portfolio →
+              </Button>
+
+            </div>
+
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+              {designs.slice(0, 3).map((design) => (
+                <div key={design.id} className="reveal">
+                  <DesignCard design={design} />
+                </div>
+              ))}
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* =====================================================
+            EDUCATION
+        ====================================================== */}
+        <section className="py-28 px-6 bg-[#eee4da]">
+
+          <div className="max-w-7xl mx-auto">
+
+            <div className="text-center max-w-3xl mx-auto reveal">
+
+              <p className="text-[11px] tracking-[0.3em] uppercase text-[#9b693f] mb-5">
+                Les Ongles Education
+              </p>
+
+              <h2 className="font-serif text-4xl md:text-6xl text-[#28221f] leading-tight">
+                Create.
+                <br />
+                Learn. Grow.
+              </h2>
+
+              <p className="mt-7 text-[#655c56] leading-relaxed">
+                Les Ongles is more than extensions. It is a
+                platform for aspiring and growing nail artists
+                to learn the craft, build confidence and create
+                financial independence.
+              </p>
+
+            </div>
+
+
+            <div className="grid md:grid-cols-2 gap-6 mt-16">
+
+              <div className="bg-[#f8f4ee] p-10 md:p-14 reveal">
+
+                <p className="text-[10px] tracking-[0.25em] uppercase text-[#9b693f]">
+                  01
+                </p>
+
+                <h3 className="font-serif text-3xl mt-7 mb-5">
+                  Online Courses
+                </h3>
+
+                <p className="text-[#655c56] leading-relaxed mb-8">
+                  Learn from wherever you are and build your
+                  nail artistry skills at your own pace.
+                </p>
+
+                <Button to="/education" variant="ghost">
+                  Explore Courses →
+                </Button>
+
+              </div>
+
+
+              <div className="bg-[#f8f4ee] p-10 md:p-14 reveal">
+
+                <p className="text-[10px] tracking-[0.25em] uppercase text-[#9b693f]">
+                  02
+                </p>
+
+                <h3 className="font-serif text-3xl mt-7 mb-5">
+                  Offline Classes
+                </h3>
+
+                <p className="text-[#655c56] leading-relaxed mb-8">
+                  Hands-on learning, practical guidance and
+                  personalised support for aspiring nail artists.
+                </p>
+
+                <Button to="/education" variant="ghost">
+                  View Classes →
+                </Button>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+
+        {/* =====================================================
+            FOUNDER
+        ====================================================== */}
+        <section className="py-28 px-6 bg-white">
+
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Image */}
+            <div className="reveal aspect-[4/5] overflow-hidden">
+
               <img
-                src="https://storage.googleapis.com/gpt-engineer-file-uploads/10680d76-c6b1-49eb-95db-48eda4cd9c62/image-gen/09ec95f4-c8c4-46a4-9ff3-73e293d7894f?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=go-api%40lovable-core-prod.iam.gserviceaccount.com%2F20261006%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20261006T185733Z&X-Goog-Expires=3599&X-Goog-Signature=16a2217f068a9716ce90d19e27b310d18ad5840bb46256f8597029248914792de40209210d83c100384f76c3203ebb29fe6770f12ad9bda495464dbc44d0e3ccf2a9550ad1b1a0817859c102c6cdba2257fc6d6f041890bf459a522c731c800b104ccbc42813468be727142c34dd91cd03b188de8822087f4fe68406420b36bac97b2d8f5656c9572b32695104bcfadf99cc67290f0f0b009dee2f6d25fd10836ed94c7da885e70f44aa859424d3ea39ade27c1e8d3f8f093456b9aba6cf71e35dece6242e122770a46c381214b3036ef4bce0bdd4f88d14947c7ae8677960ebfc7f343ee3b054c67a770a95993948ac833f4b4286d43ccf318c4aa8689a4c4e&X-Goog-SignedHeaders=host"
-                alt="Artist portrait"
+                src={Luxury}
+                alt="Les Ongles nail artistry"
                 className="w-full h-full object-cover"
               />
+
             </div>
-          </div>
-        </section>
 
-        {/* ── SERVICES ─────────────────────────────────────── */}
-        <section className="py-24 px-6 max-w-7xl mx-auto">
-          <p className="text-xs tracking-widest uppercase text-[#f5b8c8] mb-2 reveal">
-            Services
-          </p>
-          <h2 className="font-serif text-black text-4xl mb-16 reveal">
-            Made for your moment.
-          </h2>
-          <div className="space-y-12">
-            {services.slice(0, 3).map((s, i) => (
-              <div
-                key={s.id}
-                className="reveal flex text-black flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/10 pb-12"
-              >
-                <div className="flex gap-8 items-start">
-                  <span className="text-[#f5b8c8]  text-sm">0{i + 1}</span>
-                  <div>
-                    <h3 className="font-serif text-2xl mb-2">{s.title}</h3>
-                    <p className="text-black max-w-md">{s.description}</p>
-                  </div>
-                </div>
-                <Button to="/services" variant="ghost">
-                  From ₹{s.price} →
-                </Button>
+
+            {/* Text */}
+            <div className="reveal">
+
+              <p className="text-[11px] tracking-[0.3em] uppercase text-[#9b693f] mb-5">
+                The Woman Behind Les Ongles
+              </p>
+
+              <h2 className="font-serif text-4xl md:text-6xl leading-tight text-[#28221f] mb-8">
+                Her Art.
+                <br />
+                Her Identity.
+                <br />
+                Her Love.
+              </h2>
+
+              <p className="text-[#655c56] leading-relaxed max-w-lg mb-5">
+                For its founder, nails have never been just
+                about beauty. They are a form of art, creativity
+                and self-expression — a space where imagination
+                comes to life.
+              </p>
+
+              <p className="text-[#655c56] leading-relaxed max-w-lg mb-8">
+                With more than seven years in the nail industry,
+                that passion has grown into a vision for a
+                globally recognised nail brand and education
+                platform.
+              </p>
+
+              <div className="border-t border-[#d8c7b7] pt-7 mb-8">
+
+                <span className="font-serif text-5xl text-[#9b693f]">
+                  7+
+                </span>
+
+                <p className="text-xs tracking-[0.2em] uppercase text-[#655c56] mt-2">
+                  Years In The Nail Industry
+                </p>
+
               </div>
-            ))}
+
+              <Button to="/about" variant="secondary">
+                Meet The Founder →
+              </Button>
+
+            </div>
+
           </div>
+
         </section>
 
-        {/* ── TESTIMONIAL ──────────────────────────────────── */}
-        <section className="py-24 bg-white/50">
-          <div className="max-w-3xl mx-auto px-6 text-center reveal">
-            <p className="text-xs tracking-widest uppercase text-[#f5b8c8] mb-8">
-              Client Words
+
+        {/* =====================================================
+            AMRITSAR TO THE WORLD
+        ====================================================== */}
+        <section className="py-32 px-6 bg-[#28221f] text-[#f8f4ee]">
+
+          <div className="max-w-5xl mx-auto text-center reveal">
+
+            <p className="text-[11px] tracking-[0.35em] uppercase text-[#d4a574] mb-7">
+              The Vision
             </p>
-            <blockquote className="font-serif text-3xl md:text-4xl text-black leading-snug mb-8">
+
+            <h2 className="font-serif text-5xl md:text-7xl leading-tight mb-9">
+              From Amritsar
+              <br />
+              To The World.
+            </h2>
+
+            <p className="max-w-2xl mx-auto text-[#d8cec6] leading-relaxed text-base md:text-lg">
+              What began in Amritsar carries a much bigger
+              vision — to build Les Ongles into an internationally
+              recognised nail brand, while establishing its
+              founder as a recognised nail artist and educator
+              on an international stage.
+            </p>
+
+            <p className="font-serif italic text-2xl md:text-3xl text-[#d4a574] mt-10">
+              A dream inspired by Paris.
+              <br />
+              A journey still unfolding.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        {/* =====================================================
+            TESTIMONIAL
+        ====================================================== */}
+        <section className="py-28 px-6 bg-[#f8f4ee]">
+
+          <div className="max-w-3xl mx-auto text-center reveal">
+
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#9b693f] mb-8">
+              The Les Ongles Experience
+            </p>
+
+            <blockquote className="font-serif text-3xl md:text-5xl text-[#28221f] leading-snug mb-8">
               “{testimonials[0].text}”
             </blockquote>
-            <p className="text-sm tracking-widest uppercase text-black">
+
+            <p className="text-xs tracking-[0.25em] uppercase text-[#655c56]">
               {testimonials[0].name}
             </p>
-            <div className="mt-12">
-              <Button
-                to="/reviews"
-                variant="secondary"
-                className="border-white/40 text-black hover:bg-pink-100 hover:text-black"
-              >
-                Read All Reviews
+
+            <div className="mt-10">
+              <Button to="/reviews" variant="ghost">
+                Read All Reviews →
               </Button>
             </div>
+
           </div>
+
         </section>
 
-        {/* ── CTA ──────────────────────────────────────────── */}
-        <section className="py-32 px-6 text-center">
-          <p className="text-xs tracking-widest uppercase text-[#f5b8c8] mb-4 reveal">
-            Your Next Appointment
-          </p>
-          <h2 className="font-serif text-5xl text-black md:text-6xl mb-8 reveal">
-            A little luxury,
-            <br />
-            just for you.
-          </h2>
-          <div className="reveal flex flex-wrap justify-center gap-4">
-            <a
-              href="https://wa.me/91XXXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-[#f5b8c8] hover:bg-[#f0a3b8] text-[#1a1a1a] font-medium text-sm px-7 py-3.5 rounded-full transition-colors"
-            >
-              Contact on WhatsApp
-            </a>
-            <Button to="/booking" variant="secondary">
-              Book Appointment
-            </Button>
+
+        {/* =====================================================
+            FINAL CTA
+        ====================================================== */}
+        <section className="py-32 px-6 text-center bg-white">
+
+          <div className="max-w-3xl mx-auto reveal">
+
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#9b693f] mb-5">
+              Discover Les Ongles
+            </p>
+
+            <h2 className="font-serif text-5xl md:text-7xl text-[#28221f] leading-tight mb-8">
+              Your Nails.
+              <br />
+              Your Art.
+              <br />
+              Your Story.
+            </h2>
+
+            <p className="text-[#655c56] max-w-xl mx-auto leading-relaxed mb-10">
+              Discover Instant Luxury Extensions or begin your
+              journey as a nail artist with Les Ongles Education.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+
+              <Button
+                to="/extensions"
+                variant="secondary"
+              >
+                Explore Extensions
+              </Button>
+
+              <Button
+                to="/education"
+                variant="ghost"
+              >
+                Explore Education
+              </Button>
+
+            </div>
+
           </div>
+
         </section>
+
       </div>
     </PageTransition>
   );

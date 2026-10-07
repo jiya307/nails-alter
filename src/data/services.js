@@ -15,7 +15,7 @@ export const services = [
     price: 1799,
     duration: "90–120 min",
     details: "Custom length and shape. Ideal for those who want durability and drama.",
-    image: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&q=80",
+    image: "https://storage.googleapis.com/gpt-engineer-file-uploads/10680d76-c6b1-49eb-95db-48eda4cd9c62/image-gen/23c1dd91-b0f3-4074-bc20-a767acfcd6f3?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=go-api%40lovable-core-prod.iam.gserviceaccount.com%2F20261007%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20261007T161507Z&X-Goog-Expires=3599&X-Goog-Signature=86e8bc1ba363c5ab00be5db5153dd9f28c7da9575d3f75f70dc94de5b5daf539060f83cc4c401ea9f0455af13029318c18deca764cad2b557b8620590479297024d008ecbb6c75927d7b06f6a7df0bf3e73d8f6267f24bc9985e16faad51c8f2d48becc78ab06691dff665dd0933c5e0204a948578b390f99c9350ebbaa478c587324d8d375bb7856c19f39ca2a0ebaf7d1d7e7ebeff2f14c71ef2860342845b5d777150cc6d37b553c8c2e0bc15aa74fa5309f6ff69ed7f61aa23f56873b7422bc13ee3b119df8bc2967d601123827f841eff2d875f0cdb01909a009cee25404a72a7af2ade1202171c24e329837dae64085b15ae8a86662829b496eac6c280&X-Goog-SignedHeaders=host",
   },
   {
     id: "nail-extensions",
@@ -24,7 +24,7 @@ export const services = [
     price: 1499,
     duration: "90 min",
     details: "Built to look like your own nails, only longer and stronger.",
-    image: "https://images.unsplash.com/photo-1607779097040-26be85726b46?w=800&q=80",
+    image: "https://i.pinimg.com/236x/14/bf/d5/14bfd5e8231917872e5735f3ea6e6dbf.jpg",
   },
   {
     id: "french-tips",
@@ -33,7 +33,7 @@ export const services = [
     price: 1199,
     duration: "75 min",
     details: "Traditional white tip or soft coloured variations available.",
-    image: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=80",
+    image: "https://i.pinimg.com/736x/b0/75/c2/b075c285965af3f12b5dc388dcb54467.jpg",
   },
   {
     id: "chrome-nails",
@@ -51,7 +51,7 @@ export const services = [
     price: 1999,
     duration: "100–130 min",
     details: "Trial session recommended. Includes intricate details and lasting finish.",
-    image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80",
+    image: "https://storage.googleapis.com/gpt-engineer-file-uploads/10680d76-c6b1-49eb-95db-48eda4cd9c62/image-gen/311e490f-a6b9-47bb-aefc-d5ec1462502e?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=go-api%40lovable-core-prod.iam.gserviceaccount.com%2F20261007%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20261007T161507Z&X-Goog-Expires=3599&X-Goog-Signature=75b5b29e7fc969c9b4fbb060abc74411df26e05144085cb5e9429b405322eea88209b58b17409ca17c2f1cfcbe923c02e7457b529f62aa59f9920c71a6a0d32dbd7f3a9ea44e8f9800f125e8d8070baaf2fefb325042b2b97cdb944adae7ca9afab7c9c6964091c484be4401f1678ed05483e697b028f99c4f48b0580e387ac7b030f2f03e9a1938056236af1f6a1b9c46fdf1fe52d2160ee52d8dfe652ba0768b22321e85120312c2149c9f431099d7e4c271aa354b55a04d233f96e8b719b5e24c4654534f4d27bb9cd484bc664c2dba2db86337b3979baa4f6477f014253f78bb1cd94f9ba21d1398e9b6ce1585d241be130b040b57ecffbe7de95d901688&X-Goog-SignedHeaders=host",
   },
   {
     id: "custom-art",
@@ -60,7 +60,7 @@ export const services = [
     price: 1299,
     duration: "90–120 min",
     details: "Hand-painted, foil, 3D elements and mixed media available.",
-    image: "https://images.unsplash.com/photo-1607779097040-26be85726b46?w=800&q=80",
+    image: "https://i.pinimg.com/736x/53/f4/4d/53f44dfa0468e07c5d4d663ea51dfee1.jpg",
   },
   {
     id: "nail-repair",

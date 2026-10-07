@@ -11,7 +11,7 @@ export default function Portfolio() {
   const filtered = active === "All" ? designs : designs.filter((d) => d.category === active);
 
   useEffect(() => {
-    document.title = "Portfolio · Arsh Atelier";
+    document.title = "Portfolio · les Ongles";
   }, []);
 
   useEffect(() => {

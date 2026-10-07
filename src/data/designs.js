@@ -25,7 +25,7 @@ export const designs = [
     nailLength: "Medium",
     occasion: "Everyday",
     images: [
-      "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=80",
+      "https://i.pinimg.com/736x/60/17/9c/60179c6073f9e6b3d89258d90882f90f.jpg",
     ],
   },
   {
@@ -39,7 +39,7 @@ export const designs = [
     nailLength: "Long",
     occasion: "Wedding",
     images: [
-      "https://images.unsplash.com/photo-1607779097040-26be85726b46?w=800&q=80",
+      "https://i.pinimg.com/736x/84/cc/c1/84ccc1d346b1bc329740e847b18cac8a.jpg",
     ],
   },
   {
@@ -95,7 +95,7 @@ export const designs = [
     nailLength: "Medium",
     occasion: "Everyday",
     images: [
-      "https://images.unsplash.com/photo-1607779097040-26be85726b46?w=800&q=80",
+      "https://i.pinimg.com/736x/c9/78/3c/c9783c1e87ec936461161f9c84dc0afe.jpg",
     ],
   },
   {
