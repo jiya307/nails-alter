@@ -52,6 +52,8 @@ export default function About() {
             <img
               src="/images/about/studio-interior.png"
               alt="Les Ongles studio"
+               loading="lazy"
+               decoding="async"
               className="w-full h-full object-cover"
             />
 
@@ -131,6 +133,8 @@ export default function About() {
                 <img
                   src="/images/about/studio-interior.png"
                   alt="Les Ongles nail studio interior"
+                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -176,6 +180,8 @@ export default function About() {
                 <img
                   src="/images/about/press-on-nail-collection.png"
                   alt="Les Ongles press-on nail collection"
+                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -248,6 +254,8 @@ export default function About() {
                 <img
                   src="/images/about/luxury-nail-desgins.png"
                   alt="Les Ongles nail artistry"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -256,6 +264,8 @@ export default function About() {
                 <img
                   src="/images/about/pink-luxury-nail-art.png"
                   alt="Les Ongles luxury nail design"
+                   loading="lazy"
+      decoding="async"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -264,6 +274,8 @@ export default function About() {
                 <img
                   src="/images/about/champagne-pearl-floral-nails.png"
                   alt="Les Ongles bridal nail design"
+                   loading="lazy"
+      decoding="async"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -285,6 +297,8 @@ export default function About() {
                 <img
                   src="/images/about/nails.png"
                   alt="Professional nail education at Les Ongles"
+                   loading="lazy"
+      decoding="async"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -355,6 +369,9 @@ export default function About() {
                 <img
                   src="/images/about/certificates-and-products.png"
                   alt="Les Ongles professional nail certificates"
+                   loading="lazy"
+                   decoding="async"
+
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>

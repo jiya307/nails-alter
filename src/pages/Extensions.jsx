@@ -204,6 +204,8 @@ Thank you!`
               <img
                 src="/images/about/press-on-nail-collection.png"
                 alt="Les Ongles luxury press-on nail collection"
+                 loading="lazy"
+      decoding="async"
                 className="absolute inset-0 w-full h-full object-cover"
               />
 

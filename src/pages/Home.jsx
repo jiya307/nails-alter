@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const designs = [
   {
     title: "Pink Luxury",
-    image: "/images/about/pink-luxury-nail-art.png",
+    image: "/images/about/pink-luxury-nail-art.png ",
   },
   {
     title: "Champagne Pearl Floral",
@@ -128,8 +128,8 @@ export default function Home() {
       src="/images/about/main-pic.png"
       alt="LES ONGLES luxury nail studio"
       fetchPriority="high"
-      loading="eager"
-      decoding="async"
+      loading="lazy"
+  decoding="async"
       className="
         absolute
         inset-0

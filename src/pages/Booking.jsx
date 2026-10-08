@@ -541,6 +541,8 @@ Thank you! I look forward to creating my LES ONGLES set. 🤍
                         <img
                           src={design.image}
                           alt={design.title}
+                           loading="lazy"
+      decoding="async"
                           className="
                             w-full
                             h-full

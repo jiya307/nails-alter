@@ -407,6 +407,8 @@ export default function Education() {
               <img
                 src="/images/about/nails.png"
                 alt="LES ONGLES nail studio tools"
+                 loading="lazy"
+      decoding="async"
                 className="
                   w-full
                   h-full
@@ -430,6 +432,8 @@ export default function Education() {
               <img
                 src="/images/about/nail-workstation.png"
                 alt="LES ONGLES nail workstation"
+                 loading="lazy"
+      decoding="async"
                 className="
                   w-full
                   h-full
@@ -720,6 +724,8 @@ export default function Education() {
               <img
                 src="/images/about/certificates-and-products.png"
                 alt="LES ONGLES certificates and professional nail products"
+                 loading="lazy"
+      decoding="async"
                 className="
                   w-full
                   aspect-[4/3]

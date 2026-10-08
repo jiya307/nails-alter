@@ -119,22 +119,24 @@ export default function Navbar() {
     flex
     items-center
     shrink-0
+    relative
+              z-10
   "
 >
   <img
     src="/images/about/les-ongles-logo-transparent.png"
     alt="LES ONGLES"
     className="
-      w-[58px]
-      h-[48px]
-      sm:w-[68px]
-      sm:h-[54px]
-      lg:w-[72px]
-      lg:h-[58px]
-      object-contain
-      transition-transform
-      duration-300
-      group-hover:scale-105
+      w-[72px]
+                h-[54px]
+                sm:w-[82px]
+                sm:h-[60px]
+                lg:w-[92px]
+                lg:h-[64px]
+                object-contain
+                transition-transform
+                duration-300
+                group-hover:scale-105
     "
   />
             <span
@@ -152,18 +154,7 @@ export default function Navbar() {
               LES ONGLES
             </span>
 
-            <span
-              className="
-                text-[7px]
-                md:text-[8px]
-                tracking-[0.25em]
-                uppercase
-                mt-1
-                text-[#B66D70]
-              "
-            >
-              Instant Luxury Extensions
-            </span>
+            
           </Link>
 
 
@@ -178,11 +169,12 @@ export default function Navbar() {
                 to={link.path}
                 className={({ isActive }) =>
                   `
-                    relative
+                   relative
                     text-[10px]
-                    xl:text-[11px]
+                    2xl:text-[11px]
                     tracking-[0.18em]
                     uppercase
+                    whitespace-nowrap
                     transition-colors
                     duration-300
 
@@ -264,29 +256,34 @@ export default function Navbar() {
               MOBILE MENU BUTTON
           ========================== */}
           <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label="Open navigation menu"
+            aria-expanded={open}
             className="
-              lg:hidden
-              w-11
-              h-11
+              xl:hidden
+              shrink-0
+              w-12
+              h-12
               flex
               items-center
               justify-center
               border
-              border-[#D9A09A]/60
-              bg-white/50
+              border-[#C98280]/50
+              bg-[#FAF6F2]/90
               backdrop-blur-md
               text-[#7D2435]
               text-2xl
+              shadow-[0_5px_20px_rgba(74,23,34,0.10)]
               transition-all
               duration-300
               hover:bg-[#7D2435]
               hover:text-white
             "
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
           >
             <HiOutlineMenuAlt4 />
           </button>
+
 
         </div>
       </header>
@@ -299,14 +296,13 @@ export default function Navbar() {
         className={`
           fixed
           inset-0
-          z-[60]
+          z-[100]
           transition-transform
           duration-500
-          ease-out
           ${
             open
-              ? "translate-x-0"
-              : "translate-x-full"
+              ? "visible opacity-100"
+              : "invisible opacity-0 pointer-events-none"
           }
         `}
       >
@@ -333,13 +329,25 @@ export default function Navbar() {
         {/* =========================
             MOBILE HEADER
         ========================== */}
-        <div className="relative flex justify-between items-center p-6">
-
+       <div
+          className="
+            relative
+            z-10
+            flex
+            items-center
+            justify-between
+            px-5
+            sm:px-8
+            py-4
+          "
+        >
+          
           <Link
             to="/"
             onClick={() => setOpen(false)}
             className="flex flex-col leading-none"
           >
+            
             <span className="serif text-xl tracking-[0.2em] text-[#4A1722]">
               LES ONGLES
             </span>
@@ -350,24 +358,26 @@ export default function Navbar() {
           </Link>
 
           <button
+            type="button"
             onClick={() => setOpen(false)}
+            aria-label="Close navigation menu"
             className="
-              w-11
-              h-11
+              w-12
+              h-12
               flex
               items-center
               justify-center
               border
               border-[#7D2435]/30
-              bg-white/40
-              text-2xl
+              bg-white/50
+              backdrop-blur-md
               text-[#4A1722]
-              hover:bg-[#7D2435]
-              hover:text-white
+              text-2xl
               transition-all
               duration-300
+              hover:bg-[#7D2435]
+              hover:text-white
             "
-            aria-label="Close menu"
           >
             <HiOutlineX />
           </button>
@@ -378,25 +388,42 @@ export default function Navbar() {
         {/* =========================
             MOBILE LINKS
         ========================== */}
-        <nav className="relative flex flex-col items-center justify-center h-[76vh] gap-7">
+        <nav className="
+            relative
+            z-10
+            flex
+            flex-col
+            items-center
+            justify-center
+            h-[calc(100vh-90px)]
+            gap-5
+            sm:gap-6
+            px-6
+          ">
 
           {links.map((link) => (
-            <Link
+            <NavLink
               key={link.path}
               to={link.path}
-              className="
-                mobile-link
-                serif
-                text-3xl
-                md:text-4xl
-                text-[#4A1722]
-                transition-all
-                duration-300
-                hover:text-white
-              "
+              className={({ isActive }) =>
+                `
+                  mobile-link
+                  serif
+                  text-3xl
+                  sm:text-4xl
+                  transition-all
+                  duration-300
+
+                  ${
+                    isActive
+                      ? "text-white"
+                      : "text-[#4A1722] hover:text-white"
+                  }
+                `
+              }
             >
               {link.name}
-            </Link>
+            </NavLink>
           ))}
 
 
@@ -428,7 +455,7 @@ export default function Navbar() {
         {/* =========================
             MOBILE FOOTER
         ========================== */}
-        <div className="absolute bottom-7 left-0 right-0 text-center">
+        <div className="absolute bottom-5 left-0 right-0 text-center">
 
           <p className="text-[9px] tracking-[0.3em] uppercase text-[#4A1722]/70">
             LES ONGLES · AMRITSAR · PUNJAB

@@ -312,6 +312,8 @@ export default function Services() {
               <img
                 src="/images/about/press-on-nail-collection.png"
                 alt="Les Ongles handmade press-on nail collection"
+                 loading="lazy"
+      decoding="async"
                 className="h-[420px] w-full object-cover transition-transform duration-700 hover:scale-105 md:h-[560px]"
               />
             </div>
@@ -583,6 +585,8 @@ export default function Services() {
                 <img
                   src="/images/about/certificates-and-products.png"
                   alt="Les Ongles certificates and nail products"
+                   loading="lazy"
+      decoding="async"
                   className="h-[360px] w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>

@@ -218,6 +218,8 @@ export default function Portfolio() {
                       <img
                         src={design.image}
                         alt={`Les Ongles ${design.title} nail design`}
+                         loading="lazy"
+      decoding="async"
                         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
 
