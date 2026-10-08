@@ -28,40 +28,68 @@ export default function Home() {
     document.title =
       "LES ONGLES · Instant Luxury Extensions & Nail Education";
 
-    const ctx = gsap.context(() => {
-      gsap.from(".hero-content > *", {
-        y: 35,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.1,
-        ease: "power3.out",
-        delay: 0.15,
-      });
+    /*
+      PRELOAD HERO IMAGE
+      This helps the first large image start loading immediately.
+    */
+    const preload = document.createElement("link");
+    preload.rel = "preload";
+    preload.as = "image";
+    preload.href = "/images/about/studio-interior.png";
+    preload.fetchPriority = "high";
 
-      gsap.from(".stat-card", {
-        y: 25,
+    document.head.appendChild(preload);
+
+    const ctx = gsap.context(() => {
+      /*
+        HERO ANIMATION
+      */
+      gsap.from(".hero-content > *", {
+        y: 30,
         opacity: 0,
-        duration: 0.7,
+        duration: 0.8,
         stagger: 0.08,
         ease: "power3.out",
-        delay: 0.5,
+        delay: 0.1,
       });
 
+      /*
+        STATS ANIMATION
+      */
+      gsap.from(".stat-card", {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.07,
+        ease: "power3.out",
+        delay: 0.4,
+      });
+
+      /*
+        SCROLL REVEALS
+      */
       gsap.utils.toArray(".reveal").forEach((element) => {
         gsap.from(element, {
-          y: 45,
+          y: 35,
           opacity: 0,
-          duration: 0.8,
+          duration: 0.75,
           ease: "power3.out",
           scrollTrigger: {
             trigger: element,
             start: "top 88%",
+            once: true,
           },
         });
       });
     }, pageRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+
+      if (preload.parentNode) {
+        preload.parentNode.removeChild(preload);
+      }
+    };
   }, []);
 
   const openWhatsApp = () => {
@@ -80,286 +108,355 @@ export default function Home() {
         ref={pageRef}
         className="
           min-h-screen
-          overflow-hidden
+          overflow-x-hidden
           text-[#292322]
           bg-[#FAF6F2]
         "
       >
-        {/* =========================================================
+        {/* =====================================================
             HERO
-        ========================================================= */}
+        ====================================================== */}
+        {/* =====================================================
+    HERO
+===================================================== */}
+<section className="relative overflow-hidden">
 
-        <section
+  {/* HERO IMAGE */}
+  <div className="relative min-h-[720px] sm:min-h-[760px] md:min-h-[100svh]">
+
+    <img
+      src="/images/about/main-pic.png"
+      alt="LES ONGLES luxury nail studio"
+      fetchPriority="high"
+      loading="eager"
+      decoding="async"
+      className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        object-[63%_center]
+        sm:object-[60%_center]
+        md:object-center
+        lg:object-[center_right]
+      "
+    />
+
+    {/* Main overlay */}
+    <div
+      className="
+        absolute
+        inset-0
+        bg-gradient-to-r
+        from-[#4A1722]/75
+        via-[#7D2435]/35
+        to-transparent
+      "
+    />
+
+    {/* Mobile bottom overlay */}
+    <div
+      className="
+        absolute
+        inset-0
+        md:hidden
+        bg-gradient-to-t
+        from-[#4A1722]/80
+        via-[#4A1722]/20
+        to-transparent
+      "
+    />
+
+    {/* Shine */}
+    <div
+      className="
+        absolute
+        inset-0
+        pointer-events-none
+        bg-[radial-gradient(ellipse_at_25%_15%,rgba(255,255,255,0.28),transparent_20%),radial-gradient(ellipse_at_80%_35%,rgba(255,255,255,0.15),transparent_20%)]
+      "
+    />
+
+    {/* HERO CONTENT */}
+    <div
+      className="
+        relative
+        z-10
+        max-w-7xl
+        mx-auto
+        min-h-[720px]
+        sm:min-h-[760px]
+        md:min-h-[100svh]
+        px-5
+        sm:px-8
+        lg:px-16
+        flex
+        items-center
+      "
+    >
+      <div
+        className="
+          hero-content
+          w-full
+          max-w-3xl
+          text-white
+          pt-20
+          sm:pt-16
+          md:pt-0
+        "
+      >
+
+        {/* LOCATION */}
+        <p
           className="
-            relative
-            min-h-[100svh]
-            md:min-h-screen
-            overflow-hidden
-            flex
-            items-center
-            bg-[radial-gradient(circle_at_15%_15%,#fff8f6_0%,transparent_25%),radial-gradient(circle_at_85%_20%,#edc1bc_0%,transparent_30%),radial-gradient(circle_at_25%_90%,#b96f70_0%,transparent_38%),linear-gradient(135deg,#f8dfdb,#d69b97,#a9686b,#d1938f)]
+            text-[9px]
+            sm:text-xs
+            tracking-[0.28em]
+            sm:tracking-[0.35em]
+            uppercase
+            text-[#F7E6E1]
+            mb-5
           "
         >
-          {/* Shine */}
-          <div
-            className="
-              absolute
-              inset-0
-              pointer-events-none
-              bg-[radial-gradient(ellipse_at_25%_20%,rgba(255,255,255,0.48),transparent_18%),radial-gradient(ellipse_at_80%_30%,rgba(255,255,255,0.22),transparent_20%)]
-            "
-          />
+          Amritsar · Punjab · India
+        </p>
 
-          {/* Studio image */}
-          <div
-            className="
-              absolute
-              inset-0
-              bg-cover
-              bg-center
-              md:bg-[center_right]
-            "
-            style={{
-              backgroundImage:
-                "url('/images/about/studio-interior.png')",
-            }}
-          />
 
-          {/* Image overlay */}
-          <div
-            className="
-              absolute
-              inset-0
-              bg-gradient-to-r
-              from-[#4A1722]/75
-              via-[#7D2435]/35
-              to-transparent
-            "
-          />
+        {/* HEADING */}
+        <h1
+          className="
+            font-serif
+            text-[3.1rem]
+            xs:text-[3.4rem]
+            sm:text-6xl
+            md:text-7xl
+            lg:text-[88px]
+            leading-[0.88]
+            tracking-[-0.045em]
+            mb-7
+          "
+        >
+          Instant
+          <br />
+          Luxury.
+          <br />
+          <span className="text-[#F7D8D3]">
+            Beautifully You.
+          </span>
+        </h1>
 
-          {/* Mobile readability */}
-          <div
-            className="
-              absolute
-              inset-0
-              bg-gradient-to-t
-              from-[#4A1722]/60
-              via-transparent
-              to-transparent
-              md:hidden
-            "
-          />
 
-          <div
+        {/* TAGLINE */}
+        <p
+          className="
+            text-[10px]
+            sm:text-sm
+            md:text-base
+            tracking-[0.16em]
+            sm:tracking-[0.2em]
+            uppercase
+            text-[#FAEDEA]
+            leading-[1.7]
+            mb-5
+          "
+        >
+          Instant Luxury Extensions
+          <br />
+          & Nail Education
+        </p>
+
+
+        {/* DESCRIPTION */}
+        <p
+          className="
+            text-sm
+            sm:text-base
+            md:text-lg
+            text-white/85
+            max-w-xl
+            leading-[1.65]
+            mb-7
+          "
+        >
+          Naturally fitting, customisable extensions created with
+          refined details, realistic finishes and a love for nail
+          artistry.
+        </p>
+
+
+        {/* BUTTONS */}
+        <div
+          className="
+            flex
+            flex-col
+            sm:flex-row
+            gap-3
+            sm:gap-4
+            w-full
+            sm:w-auto
+          "
+        >
+
+          <Button
+            to="/extensions"
             className="
-              relative
-              z-10
+              !bg-[#F7E6E1]
+              !text-[#4A1722]
+              !border-[#F7E6E1]
+              hover:!bg-white
               w-full
-              max-w-7xl
-              mx-auto
-              px-5
-              sm:px-8
-              lg:px-16
-              py-32
-              md:py-40
+              sm:w-auto
+              px-7
+              py-4
+              rounded-full
+              text-xs
             "
           >
-            <div
-              className="
-                hero-content
-                max-w-2xl
-                text-white
-              "
-            >
-              <p
-                className="
-                  text-[10px]
-                  sm:text-xs
-                  tracking-[0.35em]
-                  uppercase
-                  text-[#F7E6E1]
-                  mb-5
-                "
-              >
-                Amritsar · Punjab · India
-              </p>
+            Explore Extensions
+          </Button>
 
-              <h1
-                className="
-                  font-serif
-                  text-5xl
-                  sm:text-6xl
-                  md:text-7xl
-                  lg:text-[88px]
-                  leading-[0.9]
-                  tracking-[-0.04em]
-                  mb-7
-                "
-              >
-                Instant
-                <br />
-                Luxury.
-                <br />
-                <span className="text-[#F7D8D3]">
-                  Beautifully You.
-                </span>
-              </h1>
 
-              <p
-                className="
-                  text-xs
-                  sm:text-sm
-                  md:text-base
-                  tracking-[0.2em]
-                  uppercase
-                  text-[#FAEDEA]
-                  max-w-xl
-                  leading-[1.8]
-                  mb-6
-                "
-              >
-                Instant Luxury Extensions
-                <br />
-                & Nail Education
-              </p>
-
-              <p
-                className="
-                  text-sm
-                  sm:text-base
-                  md:text-lg
-                  text-white/80
-                  max-w-lg
-                  leading-relaxed
-                  mb-8
-                "
-              >
-                Naturally fitting, customisable extensions created
-                with refined details, realistic finishes and a love
-                for nail artistry.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button
-                  to="/extensions"
-                  className="
-                    !bg-[#F7E6E1]
-                    !text-[#4A1722]
-                    !border-[#F7E6E1]
-                    hover:!bg-white
-                    px-7
-                    py-4
-                    rounded-full
-                  "
-                >
-                  Explore Extensions
-                </Button>
-
-                <Button
-                  to="/education"
-                  variant="secondary"
-                  className="
-                    !bg-transparent
-                    !text-white
-                    !border-white/60
-                    hover:!bg-white
-                    hover:!text-[#4A1722]
-                    px-7
-                    py-4
-                    rounded-full
-                  "
-                >
-                  Learn With LES ONGLES
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {/* =======================================================
-              STATS
-          ======================================================= */}
-
-          <div
+          <Button
+            to="/education"
+            variant="secondary"
             className="
-              absolute
-              bottom-0
-              left-0
-              right-0
-              z-20
-              bg-[#FAF6F2]/90
-              backdrop-blur-xl
-              border-t
-              border-[#7D2435]/15
+              !bg-transparent
+              !text-white
+              !border-white/70
+              hover:!bg-white
+              hover:!text-[#4A1722]
+              w-full
+              sm:w-auto
+              px-7
+              py-4
+              rounded-full
+              text-xs
             "
           >
-            <div
+            Learn With LES ONGLES
+          </Button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  {/* =====================================================
+      STATS — OUTSIDE HERO ON MOBILE
+  ====================================================== */}
+  <div
+    className="
+      relative
+      z-20
+      bg-[#FAF6F2]
+      border-t
+      border-[#7D2435]/15
+    "
+  >
+    <div
+      className="
+        max-w-7xl
+        mx-auto
+        grid
+        grid-cols-2
+        lg:grid-cols-4
+      "
+    >
+
+      {[
+        ["7+", "YEARS", "Nail Industry Experience"],
+        ["01", "INSTANT LUXURY", "Naturally Fitting Extensions"],
+        ["02", "CUSTOM", "Made For Your Style"],
+        ["03", "EDUCATION", "Online & Offline Learning"],
+      ].map(([number, title, text], index) => (
+
+        <div
+          key={title}
+          className={`
+            stat-card
+            min-h-[100px]
+            sm:min-h-[110px]
+            p-4
+            sm:p-6
+            lg:p-7
+            flex
+            items-center
+
+            ${
+              index % 2 !== 0
+                ? "border-l border-[#7D2435]/15"
+                : ""
+            }
+
+            ${
+              index >= 2
+                ? "border-t border-[#7D2435]/15 lg:border-t-0"
+                : ""
+            }
+          `}
+        >
+
+          <div className="flex items-start gap-3">
+
+            <span
               className="
-                max-w-7xl
-                mx-auto
-                grid
-                grid-cols-2
-                lg:grid-cols-4
+                font-serif
+                text-2xl
+                sm:text-3xl
+                text-[#7D2435]
+                shrink-0
               "
             >
-              {[
-                ["7+", "YEARS", "Nail Industry Experience"],
-                ["01", "INSTANT LUXURY", "Naturally Fitting Extensions"],
-                ["02", "CUSTOM", "Made For Your Style"],
-                ["03", "EDUCATION", "Online & Offline Learning"],
-              ].map(([number, title, text], index) => (
-                <div
-                  key={title}
-                  className={`
-                    stat-card
-                    p-5
-                    sm:p-6
-                    lg:p-7
-                    ${
-                      index !== 0
-                        ? "border-l border-[#7D2435]/15"
-                        : ""
-                    }
-                    ${
-                      index >= 2
-                        ? "border-t border-[#7D2435]/15 lg:border-t-0"
-                        : ""
-                    }
-                  `}
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="font-serif text-2xl text-[#7D2435]">
-                      {number}
-                    </span>
+              {number}
+            </span>
 
-                    <div>
-                      <p
-                        className="
-                          text-[9px]
-                          sm:text-[10px]
-                          tracking-[0.18em]
-                          uppercase
-                          text-[#7D2435]
-                          font-medium
-                        "
-                      >
-                        {title}
-                      </p>
+            <div className="min-w-0">
 
-                      <p className="text-[10px] sm:text-xs text-[#4A1722]/60 mt-1">
-                        {text}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <p
+                className="
+                  text-[8px]
+                  sm:text-[10px]
+                  tracking-[0.14em]
+                  sm:tracking-[0.18em]
+                  uppercase
+                  text-[#7D2435]
+                  leading-tight
+                "
+              >
+                {title}
+              </p>
+
+              <p
+                className="
+                  text-[9px]
+                  sm:text-xs
+                  text-[#4A1722]/60
+                  mt-1
+                  leading-relaxed
+                "
+              >
+                {text}
+              </p>
+
             </div>
+
           </div>
-        </section>
 
-        {/* =========================================================
+        </div>
+
+      ))}
+
+    </div>
+  </div>
+
+</section>
+
+        {/* =====================================================
             BRAND INTRO
-        ========================================================= */}
-
+        ====================================================== */}
         <section
           className="
             relative
@@ -413,9 +510,8 @@ export default function Home() {
                 md:text-lg
               "
             >
-              Born in Amritsar, LES ONGLES was created from a
-              deep passion for nail artistry, creativity and
-              self-expression.
+              Born in Amritsar, LES ONGLES was created from a deep passion
+              for nail artistry, creativity and self-expression.
             </p>
 
             <p
@@ -430,9 +526,9 @@ export default function Home() {
                 mt-5
               "
             >
-              From Instant Luxury Extensions to professional nail
-              education, LES ONGLES is a space where beauty,
-              creativity and confidence come together.
+              From Instant Luxury Extensions to professional nail education,
+              LES ONGLES is a space where beauty, creativity and confidence
+              come together.
             </p>
 
             <div className="mt-9">
@@ -452,10 +548,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =========================================================
-            EXTENSIONS
-        ========================================================= */}
 
+        {/* =====================================================
+            EXTENSIONS
+        ====================================================== */}
         <section
           className="
             py-24
@@ -465,6 +561,7 @@ export default function Home() {
           "
         >
           <div className="max-w-7xl mx-auto">
+
             <div
               className="
                 grid
@@ -517,10 +614,9 @@ export default function Home() {
                   leading-relaxed
                 "
               >
-                Thoughtfully crafted, naturally fitting and
-                customisable extensions designed to look
-                beautifully real and feel like an elevated
-                extension of you.
+                Thoughtfully crafted, naturally fitting and customisable
+                extensions designed to look beautifully real and feel like
+                an elevated extension of you.
               </p>
             </div>
 
@@ -549,7 +645,7 @@ export default function Home() {
                     p-7
                     sm:p-8
                     rounded-3xl
-                    bg-white/35
+                    bg-white/40
                     backdrop-blur-xl
                     border
                     border-white/60
@@ -598,12 +694,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =========================================================
-            SIGNATURE DESIGNS
-        ========================================================= */}
 
+        {/* =====================================================
+            SIGNATURE DESIGNS
+        ====================================================== */}
         <section className="py-24 sm:py-28 px-6 bg-[#FAF6F2]">
           <div className="max-w-7xl mx-auto">
+
             <div
               className="
                 flex
@@ -672,10 +769,12 @@ export default function Home() {
                     shadow-[0_15px_45px_rgba(74,23,34,0.08)]
                   "
                 >
-                  <div className="aspect-[4/5] overflow-hidden">
+                  <div className="aspect-[4/5] overflow-hidden bg-[#F7E6E1]">
                     <img
                       src={design.image}
                       alt={design.title}
+                      loading="lazy"
+                      decoding="async"
                       className="
                         w-full
                         h-full
@@ -710,10 +809,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =========================================================
-            STUDIO
-        ========================================================= */}
 
+        {/* =====================================================
+            STUDIO
+        ====================================================== */}
         <section
           className="
             py-24
@@ -747,6 +846,8 @@ export default function Home() {
                 <img
                   src="/images/about/nail-workstation.png"
                   alt="LES ONGLES nail workstation"
+                  loading="lazy"
+                  decoding="async"
                   className="
                     w-full
                     aspect-[4/5]
@@ -795,9 +896,8 @@ export default function Home() {
                   mb-5
                 "
               >
-                Every detail at LES ONGLES is created around
-                artistry, individuality and the experience of
-                feeling beautiful.
+                Every detail at LES ONGLES is created around artistry,
+                individuality and the experience of feeling beautiful.
               </p>
 
               <p
@@ -810,9 +910,9 @@ export default function Home() {
                   mb-8
                 "
               >
-                From your first consultation to your final set,
-                every nail is thoughtfully crafted to feel
-                personal, polished and unmistakably yours.
+                From your first consultation to your final set, every nail
+                is thoughtfully crafted to feel personal, polished and
+                unmistakably yours.
               </p>
 
               <Button
@@ -832,10 +932,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =========================================================
-            EDUCATION
-        ========================================================= */}
 
+        {/* =====================================================
+            EDUCATION
+        ====================================================== */}
         <section
           className="
             py-24
@@ -845,6 +945,7 @@ export default function Home() {
           "
         >
           <div className="max-w-7xl mx-auto">
+
             <div className="text-center max-w-3xl mx-auto reveal">
               <p
                 className="
@@ -873,7 +974,9 @@ export default function Home() {
                 <br />
                 Learn.
                 <br />
-                <span className="text-[#A9686B]">Grow.</span>
+                <span className="text-[#A9686B]">
+                  Grow.
+                </span>
               </h2>
 
               <p
@@ -885,14 +988,16 @@ export default function Home() {
                   leading-relaxed
                 "
               >
-                LES ONGLES is also a platform for aspiring and
-                growing nail artists to learn the craft, build
-                confidence and create opportunities for
-                financial independence.
+                LES ONGLES is also a platform for aspiring and growing nail
+                artists to learn the craft, build confidence and create
+                opportunities for financial independence.
               </p>
             </div>
 
+
             <div className="grid lg:grid-cols-2 gap-6 mt-14">
+
+              {/* ONLINE */}
               <div
                 className="
                   reveal
@@ -903,15 +1008,17 @@ export default function Home() {
                   border-[#7D2435]/10
                 "
               >
-                <div className="aspect-[16/10] overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden bg-[#E8B7B5]">
                   <img
                     src="/images/about/certificates-and-products.png"
                     alt="LES ONGLES certificates and nail products"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </div>
 
-                <div className="p-8">
+                <div className="p-7 sm:p-8">
                   <p className="text-[10px] tracking-[0.25em] uppercase text-[#7D2435]">
                     01 · Professional Learning
                   </p>
@@ -921,9 +1028,8 @@ export default function Home() {
                   </h3>
 
                   <p className="text-sm text-[#4A1722]/60 leading-relaxed mb-7">
-                    Learn nail artistry from wherever you are and
-                    develop skills that can grow into a creative
-                    career.
+                    Learn nail artistry from wherever you are and develop
+                    skills that can grow into a creative career.
                   </p>
 
                   <Button
@@ -941,6 +1047,8 @@ export default function Home() {
                 </div>
               </div>
 
+
+              {/* OFFLINE */}
               <div
                 className="
                   reveal
@@ -951,15 +1059,17 @@ export default function Home() {
                   border-[#7D2435]/10
                 "
               >
-                <div className="aspect-[16/10] overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden bg-[#E8B7B5]">
                   <img
                     src="/images/about/nails.png"
                     alt="LES ONGLES nail studio tools"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </div>
 
-                <div className="p-8">
+                <div className="p-7 sm:p-8">
                   <p className="text-[10px] tracking-[0.25em] uppercase text-[#7D2435]">
                     02 · Hands-On Experience
                   </p>
@@ -969,9 +1079,8 @@ export default function Home() {
                   </h3>
 
                   <p className="text-sm text-[#4A1722]/60 leading-relaxed mb-7">
-                    Practical guidance, hands-on learning and
-                    personalised support for aspiring nail
-                    artists.
+                    Practical guidance, hands-on learning and personalised
+                    support for aspiring nail artists.
                   </p>
 
                   <Button
@@ -988,14 +1097,15 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
 
-        {/* =========================================================
-            FOUNDER / STORY
-        ========================================================= */}
 
+        {/* =====================================================
+            FOUNDER / STORY
+        ====================================================== */}
         <section className="py-24 sm:py-28 px-6 bg-[#FAF6F2]">
           <div
             className="
@@ -1013,6 +1123,8 @@ export default function Home() {
                 <img
                   src="/images/about/luxury-nail-desgins.png"
                   alt="LES ONGLES luxury nail artistry"
+                  loading="lazy"
+                  decoding="async"
                   className="
                     w-full
                     aspect-[4/5]
@@ -1066,10 +1178,9 @@ export default function Home() {
                   mb-5
                 "
               >
-                For its founder, nails have never been just
-                about beauty. They are a form of art, creativity
-                and self-expression — a space where imagination
-                comes to life.
+                For its founder, nails have never been just about beauty.
+                They are a form of art, creativity and self-expression — a
+                space where imagination comes to life.
               </p>
 
               <p
@@ -1082,10 +1193,9 @@ export default function Home() {
                   mb-8
                 "
               >
-                With more than seven years in the nail industry,
-                that passion has grown into a vision for a
-                globally recognised nail brand and education
-                platform.
+                With more than seven years in the nail industry, that
+                passion has grown into a vision for a globally recognised
+                nail brand and education platform.
               </p>
 
               <div
@@ -1136,10 +1246,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =========================================================
-            VISION
-        ========================================================= */}
 
+        {/* =====================================================
+            VISION
+        ====================================================== */}
         <section
           className="
             py-28
@@ -1150,6 +1260,7 @@ export default function Home() {
           "
         >
           <div className="max-w-5xl mx-auto text-center reveal">
+
             <p
               className="
                 text-[10px]
@@ -1191,10 +1302,10 @@ export default function Home() {
                 md:text-lg
               "
             >
-              What began in Amritsar carries a much bigger
-              vision — to build LES ONGLES into an internationally
-              recognised nail brand while establishing its
-              founder as a recognised nail artist and educator.
+              What began in Amritsar carries a much bigger vision — to build
+              LES ONGLES into an internationally recognised nail brand while
+              establishing its founder as a recognised nail artist and
+              educator.
             </p>
 
             <p
@@ -1214,10 +1325,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =========================================================
-            FINAL CTA
-        ========================================================= */}
 
+        {/* =====================================================
+            FINAL CTA
+        ====================================================== */}
         <section
           className="
             py-28
@@ -1228,6 +1339,7 @@ export default function Home() {
           "
         >
           <div className="max-w-3xl mx-auto reveal">
+
             <p
               className="
                 text-[10px]
@@ -1272,11 +1384,20 @@ export default function Home() {
                 mb-10
               "
             >
-              Discover Instant Luxury Extensions or begin your
-              journey as a nail artist with LES ONGLES Education.
+              Discover Instant Luxury Extensions or begin your journey as a
+              nail artist with LES ONGLES Education.
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+            <div
+              className="
+                flex
+                flex-col
+                sm:flex-row
+                justify-center
+                gap-3
+                sm:gap-4
+              "
+            >
               <Button
                 to="/extensions"
                 className="

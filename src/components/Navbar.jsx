@@ -7,10 +7,9 @@ const links = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Portfolio", path: "/portfolio" },
-  { name: "Extensions", path: "/extensions" },
-  { name: "Education", path: "/education" },
+  { name: "Services", path: "/services" },
+  { name: "Reviews", path: "/reviews" },
   { name: "Contact", path: "/contact" },
-  { name: "Enquire", path: "/contact" },
 ];
 
 export default function Navbar() {
@@ -63,9 +62,9 @@ export default function Navbar() {
 
   return (
     <>
-      {/* =====================================================
+      {/* =========================
           NAVBAR
-      ====================================================== */}
+      ========================== */}
       <header
         className={`
           fixed
@@ -78,96 +77,104 @@ export default function Navbar() {
           ${
             scrolled
               ? `
-                bg-[#FAF6F2]/90
+                bg-[#FAF6F2]/95
                 backdrop-blur-xl
                 border-b
-                border-[#D9A09A]/40
-                shadow-[0_8px_35px_rgba(125,36,53,0.08)]
+                border-[#c98280]/35
+                shadow-[0_8px_30px_rgba(74,23,34,0.12)]
                 py-3
               `
-              : "bg-transparent py-6"
+              : `
+          bg-[#FAF6F2]/75
+          backdrop-blur-md
+          border-b
+          border-white/30
+          shadow-[0_4px_25px_rgba(74,23,34,0.08)]
+          py-3
+        `
           }
         `}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
+        <div
+  className="
+    max-w-[1500px]
+    mx-auto
+    px-5
+    sm:px-8
+    lg:px-10
+    flex
+    items-center
+    justify-between
+    gap-6
+  "
+>
 
-          {/* =================================================
+          {/* =========================
               LOGO
-          ================================================== */}
+          ========================== */}
           <Link
             to="/"
-            className={`
-              relative
-              group
-              flex
-              flex-col
-              leading-none
-              transition-all
-              duration-500
-            `}
-          >
+  className="
+    group
+    flex
+    items-center
+    shrink-0
+  "
+>
+  <img
+    src="/images/about/les-ongles-logo-transparent.png"
+    alt="LES ONGLES"
+    className="
+      w-[58px]
+      h-[48px]
+      sm:w-[68px]
+      sm:h-[54px]
+      lg:w-[72px]
+      lg:h-[58px]
+      object-contain
+      transition-transform
+      duration-300
+      group-hover:scale-105
+    "
+  />
             <span
-              className={`
+              className="
                 serif
                 text-xl
                 md:text-2xl
                 tracking-[0.2em]
+                text-[#4A1722]
+                group-hover:text-[#7D2435]
                 transition-colors
-                duration-500
-                ${
-                  scrolled
-                    ? "text-[#4A1722]"
-                    : "text-[#4A1722]"
-                }
-              `}
+                duration-300
+              "
             >
               LES ONGLES
             </span>
 
             <span
-              className={`
+              className="
                 text-[7px]
                 md:text-[8px]
                 tracking-[0.25em]
                 uppercase
                 mt-1
-                transition-colors
-                duration-500
-                ${
-                  scrolled
-                    ? "text-[#B66D70]"
-                    : "text-[#7D2435]"
-                }
-              `}
+                text-[#B66D70]
+              "
             >
               Instant Luxury Extensions
             </span>
-
-            <span
-              className="
-                absolute
-                -bottom-2
-                left-0
-                h-px
-                w-0
-                bg-gradient-to-r
-                from-[#7D2435]
-                via-[#C98280]
-                to-transparent
-                transition-all
-                duration-500
-                group-hover:w-full
-              "
-            />
           </Link>
 
-          {/* =================================================
-              DESKTOP NAVIGATION
-          ================================================== */}
-          <nav className="hidden lg:flex items-center gap-7 xl:gap-9">
+
+          {/* =========================
+              DESKTOP NAV
+          ========================== */}
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+
             {links.map((link) => (
               <NavLink
-                key={`${link.name}-${link.path}`}
+                key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
                   `
@@ -207,33 +214,31 @@ export default function Navbar() {
               </NavLink>
             ))}
 
-            {/* =================================================
-                ENQUIRE BUTTON
-            ================================================== */}
-            <a
-              href="https://wa.me/917814117379"
-              target="_blank"
-              rel="noreferrer"
+
+            {/* =========================
+                BOOK NOW
+            ========================== */}
+            <Link
+              to="/booking"
               className="
-                ml-1
                 relative
                 overflow-hidden
                 group
                 bg-[#7D2435]
                 text-white
-                px-6
-                py-3
+                px-7
+                py-3.5
                 text-[10px]
-                tracking-[0.18em]
+                tracking-[0.2em]
                 uppercase
                 transition-all
                 duration-300
-                hover:bg-[#4A1722]
                 shadow-[0_8px_25px_rgba(125,36,53,0.18)]
+                hover:bg-[#4A1722]
               "
             >
               <span className="relative z-10">
-                Enquire →
+                Book Now
               </span>
 
               <span
@@ -250,12 +255,14 @@ export default function Navbar() {
                   duration-700
                 "
               />
-            </a>
+            </Link>
+
           </nav>
 
-          {/* =================================================
+
+          {/* =========================
               MOBILE MENU BUTTON
-          ================================================== */}
+          ========================== */}
           <button
             className="
               lg:hidden
@@ -280,12 +287,14 @@ export default function Navbar() {
           >
             <HiOutlineMenuAlt4 />
           </button>
+
         </div>
       </header>
 
-      {/* =====================================================
+
+      {/* =========================
           MOBILE MENU
-      ====================================================== */}
+      ========================== */}
       <div
         className={`
           fixed
@@ -301,6 +310,7 @@ export default function Navbar() {
           }
         `}
       >
+
         {/* Luxury background */}
         <div
           className="
@@ -319,10 +329,12 @@ export default function Navbar() {
           "
         />
 
-        {/* =================================================
+
+        {/* =========================
             MOBILE HEADER
-        ================================================== */}
+        ========================== */}
         <div className="relative flex justify-between items-center p-6">
+
           <Link
             to="/"
             onClick={() => setOpen(false)}
@@ -359,15 +371,18 @@ export default function Navbar() {
           >
             <HiOutlineX />
           </button>
+
         </div>
 
-        {/* =================================================
+
+        {/* =========================
             MOBILE LINKS
-        ================================================== */}
-        <nav className="relative flex flex-col items-center justify-center h-[76vh] gap-6 px-6">
+        ========================== */}
+        <nav className="relative flex flex-col items-center justify-center h-[76vh] gap-7">
+
           {links.map((link) => (
             <Link
-              key={`${link.name}-${link.path}`}
+              key={link.path}
               to={link.path}
               className="
                 mobile-link
@@ -378,18 +393,16 @@ export default function Navbar() {
                 transition-all
                 duration-300
                 hover:text-white
-                hover:tracking-[0.06em]
               "
             >
               {link.name}
             </Link>
           ))}
 
-          {/* WhatsApp */}
-          <a
-            href="https://wa.me/917814117379"
-            target="_blank"
-            rel="noreferrer"
+
+          {/* BOOK NOW */}
+          <Link
+            to="/booking"
             className="
               mobile-link
               mt-5
@@ -406,18 +419,23 @@ export default function Navbar() {
               hover:bg-[#4A1722]
             "
           >
-            Enquire on WhatsApp →
-          </a>
+            Book Now →
+          </Link>
+
         </nav>
 
-        {/* =================================================
+
+        {/* =========================
             MOBILE FOOTER
-        ================================================== */}
-        <div className="relative absolute bottom-7 left-0 right-0 text-center">
+        ========================== */}
+        <div className="absolute bottom-7 left-0 right-0 text-center">
+
           <p className="text-[9px] tracking-[0.3em] uppercase text-[#4A1722]/70">
             LES ONGLES · AMRITSAR · PUNJAB
           </p>
+
         </div>
+
       </div>
     </>
   );
