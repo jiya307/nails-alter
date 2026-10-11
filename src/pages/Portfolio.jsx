@@ -681,6 +681,9 @@ export default function Portfolio() {
             alt="Luxury custom nail designs by LES ONGLES"
             loading="lazy"
             decoding="async"
+            width="800"
+            height="1000"
+
             className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
           />
         </div>
