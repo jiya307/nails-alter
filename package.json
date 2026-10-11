@@ -16,6 +16,16 @@
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.1"
   },
+  
+
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+,
+
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
     "@types/react": "^19.0.0",

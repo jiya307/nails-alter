@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import PageTransition from "../components/PageTransition";
+import { Link } from "react-router-dom";
 
 const designs = [
   {
@@ -99,6 +100,7 @@ export default function Portfolio() {
   }, [active]);
 
   return (
+    
     <PageTransition>
       <main className="min-h-screen overflow-hidden bg-[#f4d8d4] text-[#292322]">
 
@@ -208,9 +210,15 @@ export default function Portfolio() {
             >
               {filteredDesigns.map((design) => (
                 <article
-                  key={design.id}
-                  className="portfolio-item group"
-                >
+  key={design.id}
+  className="portfolio-item group"
+>
+  <Link
+    to={`/portfolio/${design.id}`}
+    className="block"
+    aria-label={`Explore ${design.title} design`}
+  ></Link>
+                
                   <div className="overflow-hidden rounded-[2px] border border-white/60 bg-[#f9e8e5]/70 shadow-[0_18px_50px_rgba(87,43,45,0.14)]">
 
                     {/* IMAGE */}

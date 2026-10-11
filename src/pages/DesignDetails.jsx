@@ -7,8 +7,7 @@ import Button from "../components/Button";
 export default function DesignDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const design = designs.find((d) => d.id === id);
-
+  const design = designs.find((d) => String(d.id) === id);
   useEffect(() => {
     if (design) document.title = `${design.title} · Arsh Atelier`;
   }, [design]);
