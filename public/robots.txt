@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nails-alter.vercel.app/sitemap.xml
