@@ -181,7 +181,8 @@ export default function About() {
               alt="Founder of LES ONGLES, nail artist in Amritsar"
 
                loading="lazy"
-
+               width="800"
+               height="1000"
                decoding="async"
 
               className="w-full h-full object-cover"
