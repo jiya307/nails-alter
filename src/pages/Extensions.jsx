@@ -204,7 +204,7 @@ Thank you!`
               <img
                 src="/images/about/press-on-nail-collection.png"
                 alt="Les Ongles luxury press-on nail collection"
-                 loading="lazy"
+                 loading="eager"
       decoding="async"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -396,7 +396,8 @@ Thank you!`
 
                 <img
                   src="/images/about/nail-workstation.png"
-                  alt="Les Ongles nail workstation"
+                  alt="Les Ongles nail workstation" loading="eager"
+  decoding="async"
                   className="w-full h-64 object-cover mt-10"
                 />
               </div>
@@ -587,7 +588,8 @@ Thank you!`
             <div className="relative min-h-[430px] overflow-hidden reveal">
               <img
                 src="/images/about/pink-mehndi-floral-nails.png"
-                alt="Custom luxury nail design by Les Ongles"
+                alt="Custom luxury nail design by Les Ongles" loading="eager"
+  decoding="async"
                 className="absolute inset-0 w-full h-full object-cover"
               />
 

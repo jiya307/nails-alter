@@ -29,7 +29,7 @@ export default function About() {
 
     const seoDescription =
       "Discover the story of LES ONGLES, an Amritsar-based nail artistry brand offering luxury press-on nail extensions, bespoke nail designs and professional nail education.";
-    const canonicalUrl = "https://nails-alter.vercel.app/about";
+    const canonicalUrl = "https://lesongles.in/about";
 
     const setMeta = (attribute, key, content) => {
       let element = document.head.querySelector(`meta[${attribute}="${key}"]`);
@@ -79,7 +79,7 @@ export default function About() {
       isPartOf: {
         "@type": "WebSite",
         name: "LES ONGLES",
-        url: "https://nails-alter.vercel.app/"
+        url: "https://lesongles.in/"
       },
       about: {
         "@type": "Organization",
@@ -174,20 +174,17 @@ export default function About() {
 
           <div className="absolute inset-0">
 
-            <img
-
-              src="/images/about/founder3.avif"
-
-              alt="Founder of LES ONGLES, nail artist in Amritsar"
-
-               loading="lazy"
-               width="800"
-               height="1000"
-               decoding="async"
-
-              className="w-full h-full object-cover"
-
-            />
+            
+<img
+  src="/images/about/founder3.avif"
+  alt="Founder of LES ONGLES, nail artist in Amritsar"
+  fetchPriority="high"
+  loading="eager"
+  decoding="async"
+  width="800"
+  height="1000"
+  className="w-full h-full object-cover"
+/>
 
 
 
@@ -343,9 +340,8 @@ export default function About() {
 
                   alt="Les Ongles nail studio interior"
 
-                   loading="lazy"
-
-                  decoding="async"
+                   loading="eager"
+  decoding="async"
 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
 
@@ -437,9 +433,8 @@ export default function About() {
 
                   alt="Les Ongles press-on nail collection"
 
-                   loading="lazy"
-
-                  decoding="async"
+                   loading="eager"
+  decoding="async"
 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
 
@@ -585,9 +580,8 @@ export default function About() {
 
                   alt="Les Ongles nail artistry"
 
-                  loading="lazy"
-
-                  decoding="async"
+                  loading="eager"
+  decoding="async"
 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
 
@@ -605,7 +599,7 @@ export default function About() {
 
                   alt="Les Ongles luxury nail design"
 
-                   loading="lazy"
+                   loading="eager"
 
       decoding="async"
 
@@ -625,7 +619,7 @@ export default function About() {
 
                   alt="Les Ongles bridal nail design"
 
-                   loading="lazy"
+                   loading="eager"
 
       decoding="async"
 
@@ -671,7 +665,7 @@ export default function About() {
 
                   alt="Professional nail education at Les Ongles"
 
-                   loading="lazy"
+                   loading="eager"
 
       decoding="async"
 
@@ -815,7 +809,7 @@ export default function About() {
 
                   alt="Les Ongles professional nail certificates"
 
-                   loading="lazy"
+                   loading="eager"
 
                    decoding="async"
 

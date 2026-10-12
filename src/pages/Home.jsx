@@ -58,8 +58,7 @@ export default function Home() {
     // Home page SEO metadata
     const description =
       "Discover luxury nail extensions, custom press-on nails, bridal nail designs and professional nail courses at LES ONGLES in Amritsar, Punjab.";
-    const canonicalUrl = "https://nails-alter.vercel.app/";
-
+    const canonicalUrl = "https://lesongles.in/home";
     const setMeta = (attribute, key, content) => {
       let element = document.head.querySelector(`meta[${attribute}="${key}"]`);
       if (!element) {
@@ -329,8 +328,7 @@ export default function Home() {
 
       fetchPriority="high"
 
-      loading="lazy"
-
+    loading="eager"
   decoding="async"
 
       className="
@@ -1619,9 +1617,8 @@ export default function Home() {
 
                       alt={design.title}
 
-                      loading="lazy"
-
-                      decoding="async"
+                      loading="eager"
+  decoding="async"
 
                       className="
 
@@ -1765,7 +1762,7 @@ export default function Home() {
 
                   alt="LES ONGLES nail workstation"
 
-                  loading="lazy"
+                  loading="eager"
 
                   decoding="async"
 
@@ -2097,7 +2094,7 @@ export default function Home() {
 
                     alt="LES ONGLES certificates and nail products"
 
-                    loading="lazy"
+                    loading="eager"
 
                     decoding="async"
 
@@ -2199,7 +2196,7 @@ export default function Home() {
 
                     alt="LES ONGLES nail studio tools"
 
-                    loading="lazy"
+                    loading="eager"
 
                     decoding="async"
 
@@ -2317,7 +2314,7 @@ export default function Home() {
 
                   src="/images/about/founder1.avif"
                   alt="Founder and nail artist at LES ONGLES, Amritsar"
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                   width="800"
                   height="1000"

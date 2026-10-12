@@ -47,7 +47,8 @@ export default function Navbar() {
           <Link to="/" aria-label="LES ONGLES home" className="flex shrink-0 items-center gap-2 sm:gap-3">
             <img
               src="/images/about/les-ongles-logo-transparent.png"
-              alt="LES ONGLES monogram"
+              alt="LES ONGLES monogram" loading="eager"
+  decoding="async"
               className="h-[38px] w-[52px] object-contain sm:h-[44px] sm:w-[60px] lg:h-[48px] lg:w-[68px]"
             />
             <span className="serif whitespace-nowrap text-[15px] tracking-[0.16em] text-[#4A1722] sm:text-lg lg:text-xl sm:tracking-[0.2em]">

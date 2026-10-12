@@ -137,7 +137,7 @@ export default function Services() {
       "Luxury Nail Extensions & Nail Courses in Amritsar | LES ONGLES";
     const pageDescription =
       "Explore custom press-on nail extensions, bridal nail sets, luxury nail art and professional nail artist courses at LES ONGLES in Amritsar, Punjab.";
-    const canonicalUrl = "https://nails-alter.vercel.app/services";
+    const canonicalUrl = "https://lesongles.in/services";
 
     document.title = pageTitle;
 
@@ -465,6 +465,8 @@ export default function Services() {
                     src="/images/about/royal-maroon-gold-nails.png"
 
                     alt="Les Ongles press-on nail collection"
+                    loading="eager"
+  decoding="async"
 
                     className="h-[480px] w-full object-cover md:h-[560px]"
 
@@ -722,7 +724,7 @@ export default function Services() {
 
                 alt="Les Ongles handmade press-on nail collection"
 
-                 loading="lazy"
+                 loading="earger"
 
       decoding="async"
 
@@ -1268,7 +1270,7 @@ export default function Services() {
 
                   alt="Les Ongles certificates and nail products"
 
-                   loading="lazy"
+                   loading="eager"
 
       decoding="async"
 

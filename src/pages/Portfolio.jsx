@@ -174,7 +174,11 @@ export default function Portfolio() {
             id: photo._id,
             title: photo.title || "Nail Art",
             category: normalizeCategory(photo.category),
-            image: urlFor(photo.image).width(900).quality(85).url(),
+            image: urlFor(photo.image)
+  .width(700)
+  .quality(80)
+  .format("webp")
+  .url(),
             description: photo.description || "Handcrafted nail artistry by LES ONGLES.",
           }));
 
@@ -557,18 +561,14 @@ export default function Portfolio() {
                     <div className="relative aspect-[4/5] overflow-hidden bg-[#e8c0bd]">
 
                       <img
-
-                        src={design.image}
-
-                        alt={`Les Ongles ${design.title} nail design`}
-
-                         loading="lazy"
-
-      decoding="async"
-
-                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-
-                      />
+  src={design.image}
+  alt={`Les Ongles ${design.title} nail design`}
+  loading="eager"
+  decoding="async"
+  width="700"
+  height="875"
+  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+/>
 
 
 

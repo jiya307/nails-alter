@@ -96,7 +96,7 @@ export default function Education() {
       };
     };
 
-    const canonicalUrl = "https://nails-alter.vercel.app/education";
+    const canonicalUrl = "https://lesongles.in/education";
     let canonical = document.head.querySelector('link[rel="canonical"]');
     const createdCanonical = !canonical;
     const previousCanonical = canonical?.getAttribute("href");
@@ -129,7 +129,7 @@ export default function Education() {
       provider: {
         "@type": "BeautySalon",
         name: "LES ONGLES",
-        url: "https://nails-alter.vercel.app/",
+        url: "https://lesongles.in/",
         telephone: "+91 78141 17379",
         email: "lesongles8@gmail.com",
         address: {
@@ -898,7 +898,7 @@ export default function Education() {
 
                 alt="LES ONGLES nail studio tools"
 
-                 loading="lazy"
+                 loading="eager"
 
       decoding="async"
 
@@ -948,7 +948,7 @@ export default function Education() {
 
                 alt="LES ONGLES nail workstation"
 
-                 loading="lazy"
+                 loading="eager"
 
       decoding="async"
 
@@ -1532,7 +1532,7 @@ export default function Education() {
 
                 alt="LES ONGLES certificates and professional nail products"
 
-                 loading="lazy"
+                 loading="eager"
 
       decoding="async"
 
