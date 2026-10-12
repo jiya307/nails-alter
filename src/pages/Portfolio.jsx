@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 import PageTransition from "../components/PageTransition";
+import { sanityClient, urlFor } from "../lib/sanity";
 
 
 
@@ -127,21 +128,74 @@ const categories = [
 
 
 
+function normalizeCategory(category) {
+  const value = String(category || "Luxury").trim().toLowerCase();
+  const categoriesMap = {
+    luxury: "Luxury",
+    bridal: "Bridal",
+    "bridal nails": "Bridal",
+    statement: "Statement",
+    festive: "Festive",
+    "nail art": "Statement",
+    "nail extensions": "Luxury",
+    extensions: "Luxury",
+    gel: "Luxury",
+    "gel nails": "Luxury",
+  };
+  return categoriesMap[value] || "Luxury";
+}
+
 export default function Portfolio() {
-
   const [active, setActive] = useState("All");
-
+  const [sanityDesigns, setSanityDesigns] = useState([]);
+  const [sanityLoaded, setSanityLoaded] = useState(false);
   const gridRef = useRef(null);
 
+  // Load published portfolio entries from Sanity. Static designs remain as a fallback.
+  useEffect(() => {
+    let cancelled = false;
 
+    sanityClient
+      .fetch(
+        `*[_type == "portfolio" && published == true] | order(order asc, _createdAt desc) {
+          _id,
+          title,
+          category,
+          image,
+          description
+        }`
+      )
+      .then((photos) => {
+        if (cancelled) return;
 
+        const formattedPhotos = (photos || [])
+          .filter((photo) => photo.image)
+          .map((photo) => ({
+            id: photo._id,
+            title: photo.title || "Nail Art",
+            category: normalizeCategory(photo.category),
+            image: urlFor(photo.image).width(900).quality(85).url(),
+            description: photo.description || "Handcrafted nail artistry by LES ONGLES.",
+          }));
+
+        setSanityDesigns(formattedPhotos);
+        setSanityLoaded(true);
+      })
+      .catch((error) => {
+        console.error("Sanity portfolio error:", error);
+        if (!cancelled) setSanityLoaded(true);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const allDesigns = [...designs, ...sanityDesigns];
   const filteredDesigns =
-
     active === "All"
-
-      ? designs
-
-      : designs.filter((design) => design.category === active);
+      ? allDesigns
+      : allDesigns.filter((design) => design.category === active);
 
 
 
@@ -150,7 +204,7 @@ export default function Portfolio() {
       "Luxury Nail Art Portfolio in Amritsar | LES ONGLES";
     const pageDescription =
       "Explore the LES ONGLES portfolio of luxury nail art, bridal nail designs, custom press-on nails, festive styles and elegant nail extensions in Amritsar, Punjab.";
-    const canonicalUrl = "https://nails-alter.vercel.app/portfolio";
+    const canonicalUrl = "https://lesongles.in/portfolio";
 
     document.title = pageTitle;
 
@@ -203,7 +257,7 @@ export default function Portfolio() {
       isPartOf: {
         "@type": "WebSite",
         name: "LES ONGLES",
-        url: "https://nails-alter.vercel.app/"
+        url: "https://lesongles.in/"
       },
       about: {
         "@type": "Thing",
@@ -263,7 +317,7 @@ export default function Portfolio() {
 
     );
 
-  }, [active]);
+  }, [active, sanityDesigns]);
 
 
 
@@ -655,76 +709,92 @@ export default function Portfolio() {
             CUSTOM DESIGN SECTION
 
         ====================================================== */}
-<section className="relative overflow-hidden border-y border-[#a96b6d]/25 bg-[#e7b7b4] px-6 py-20 md:py-28">
-  {/* Background glow */}
-  <div className="pointer-events-none absolute inset-0">
-    <div className="absolute -left-24 top-[-100px] h-80 w-80 rounded-full bg-white/30 blur-3xl" />
-    <div className="absolute -right-20 bottom-[-120px] h-96 w-96 rounded-full bg-[#7d2435]/15 blur-3xl" />
-  </div>
 
-  <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-24">
+        <section className="relative overflow-hidden border-y border-[#a96b6d]/25 bg-[#e7b7b4] px-6 py-24 md:py-32">
 
-    {/* LEFT: Circular Image */}
-    <div className="flex justify-center lg:justify-start">
-      <div className="relative flex items-center justify-center">
 
-        {/* Outer decorative circle */}
-        <div className="absolute h-[290px] w-[290px] rounded-full border border-[#7d2435]/40 md:h-[390px] md:w-[390px]" />
 
-        {/* Inner glow */}
-        <div className="absolute h-[260px] w-[260px] rounded-full bg-white/40 blur-2xl md:h-[350px] md:w-[350px]" />
+          <div className="pointer-events-none absolute inset-0">
 
-        {/* Main circular photo */}
-        <div className="relative h-[250px] w-[250px] overflow-hidden rounded-full border-[6px] border-[#fff5f2] shadow-[0_15px_45px_rgba(125,36,53,0.25)] md:h-[340px] md:w-[340px]">
-          <img
-            src="/images/about/create.jpg"
-            alt="Luxury custom nail designs by LES ONGLES"
-            loading="lazy"
-            decoding="async"
-            width="800"
-            height="1000"
+            <div className="absolute -left-24 top-[-100px] h-80 w-80 rounded-full bg-white/30 blur-3xl" />
 
-            className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
-          />
-        </div>
+            <div className="absolute -right-20 bottom-[-120px] h-96 w-96 rounded-full bg-[#7d2435]/15 blur-3xl" />
 
-        {/* Small decorative circle */}
-        <div className="absolute -right-3 top-8 h-5 w-5 rounded-full border-2 border-[#7d2435] bg-[#fff5f2] md:right-2" />
-      </div>
-    </div>
+          </div>
 
-    {/* RIGHT: Content */}
-    <div>
-      <p className="mb-5 text-[10px] uppercase tracking-[0.35em] text-[#7d2435]">
-        Made For You
-      </p>
 
-      <h2 className="serif text-4xl leading-tight text-[#382323] md:text-6xl">
-        Have a design
-        <br />
-        <span className="text-[#7d2435]">in mind?</span>
-      </h2>
 
-      <p className="mt-6 max-w-xl text-sm leading-7 text-[#5f4646] md:text-base">
-        Your inspiration can become your next favourite set.
-        Share your reference, colours, occasion or mood with
-        Les Ongles and create a customised nail design around
-        your personal style.
-      </p>
+          <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-24">
 
-      <a
-        href="https://wa.me/917814117379"
-        target="_blank"
-        rel="noreferrer"
-        className="mt-8 inline-flex items-center justify-center bg-[#7d2435] px-7 py-4 text-[10px] uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-[#4a1722] hover:shadow-xl"
-      >
-        Create My Custom Set →
-      </a>
-    </div>
 
-  </div>
-</section>
-```
+
+            <div>
+
+              <p className="mb-5 text-[10px] uppercase tracking-[0.35em] text-[#7d2435]">
+
+                Made For You
+
+              </p>
+
+
+
+              <h2 className="serif text-4xl leading-tight md:text-6xl">
+
+                Have a design
+
+                <br />
+
+                <span className="text-[#7d2435]">
+
+                  in mind?
+
+                </span>
+
+              </h2>
+
+            </div>
+
+
+
+            <div>
+
+              <p className="max-w-xl text-sm leading-7 text-[#5f4646] md:text-base">
+
+                Your inspiration can become your next favourite set.
+
+                Share your reference, colours, occasion or mood with
+
+                Les Ongles and create a customised nail design around
+
+                your personal style.
+
+              </p>
+
+
+
+              <a
+
+                href="https://wa.me/917814117379"
+
+                target="_blank"
+
+                rel="noreferrer"
+
+                className="mt-8 inline-flex items-center justify-center bg-[#7d2435] px-7 py-4 text-[10px] uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-[#4a1722] hover:shadow-xl"
+
+              >
+
+                Create My Custom Set →
+
+              </a>
+
+            </div>
+
+
+
+          </div>
+
+        </section>
 
 
 
