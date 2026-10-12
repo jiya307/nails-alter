@@ -5,9 +5,11 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { FiMail, FiArrowUpRight } from "react-icons/fi";
-
+import LocationSection from "./ui/Location";
 export default function Footer() {
   return (
+     <>
+      <LocationSection />
     <footer className="relative overflow-hidden bg-[#4A1722] text-[#FAF6F2]">
 
       {/* =====================================================
@@ -392,5 +394,6 @@ export default function Footer() {
 
       </div>
     </footer>
+    </>
   );
 }

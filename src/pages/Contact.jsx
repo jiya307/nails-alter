@@ -90,11 +90,14 @@ export default function Contact() {
         { publicKey }
       );
       setSent(true);
-    } catch (error) {
-      console.error("EmailJS send failed:", error);
-      setSubmitError(
-        "Your message could not be sent. Please try again or contact us on WhatsApp."
-      );
+    }  catch (error) {
+  console.error("EmailJS status:", error?.status);
+  console.error("EmailJS response:", error?.text);
+  console.error("EmailJS full error:", error);
+
+  setSubmitError(
+    `Email failed: ${error?.text || "Unknown EmailJS error"}`
+  );
     } finally {
       setSending(false);
     }

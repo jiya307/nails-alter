@@ -91,7 +91,7 @@ export default function Navbar() {
 
       {/* Mobile menu: opens immediately without link entrance animations */}
       {open && (
-        <div className="fixed inset-0 z-[100] overflow-y-auto bg-[radial-gradient(circle_at_15%_15%,#fff4f1_0%,transparent_25%),radial-gradient(circle_at_85%_25%,#e6b5b0_0%,transparent_30%),linear-gradient(135deg,#f8e1dd,#d69a96,#a96367,#7D2435)] lg:hidden">
+        <div className="fixed inset-0 z-[100] overflow-y-auto animate-[fadeIn_0.3s_ease-out] bg-[radial-gradient(circle_at_15%_15%,#fff4f1_0%,transparent_25%),radial-gradient(circle_at_85%_25%,#e6b5b0_0%,transparent_30%),linear-gradient(135deg,#f8e1dd,#d69a96,#a96367,#7D2435)] lg:hidden">
           <div className="relative z-10 flex items-center justify-between px-3 py-2.5 sm:px-5">
             <Link to="/" onClick={() => setOpen(false)} aria-label="LES ONGLES home" className="flex items-center gap-2">
               <img
@@ -120,8 +120,12 @@ export default function Navbar() {
                 to={link.path}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `serif text-2xl sm:text-3xl ${isActive ? "text-white" : "text-[#4A1722]"}`
-                }
+  `serif text-2xl sm:text-3xl opacity-0 animate-[menuSlideUp_0.45s_ease-out_forwards] ${
+    isActive ? "text-white" : "text-[#4A1722]"
+  }`
+}
+style={{ animationDelay: `${links.indexOf(link) * 80}ms` }}
+                
               >
                 {link.name}
               </NavLink>
