@@ -176,7 +176,7 @@ export default function About() {
 
             <img
 
-              src="/images/about/fonder2.webp"
+              src="/images/about/founder3.avif"
 
               alt="Founder of LES ONGLES, nail artist in Amritsar"
 

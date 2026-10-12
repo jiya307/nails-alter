@@ -323,7 +323,7 @@ export default function Home() {
 
     <img
 
-      src="/images/about/main-pic.png"
+      src="/images/about/hero.avif"
 
       alt="LES ONGLES luxury nail studio"
 
@@ -2315,7 +2315,7 @@ export default function Home() {
 
                 <img
 
-                  src="/images/about/founder.jpg"
+                  src="/images/about/founder1.avif"
                   alt="Founder and nail artist at LES ONGLES, Amritsar"
                   loading="lazy"
                   decoding="async"
